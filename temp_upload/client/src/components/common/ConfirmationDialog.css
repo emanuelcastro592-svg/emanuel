@@ -1,0 +1,35 @@
+.confirmation-dialog {
+  padding: 8px 0;
+  text-align: center;
+}
+
+.confirmation-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  animation: confirmation-pulse 0.5s ease-out;
+}
+
+.confirmation-message {
+  font-size: 16px;
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.confirmation-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+@keyframes confirmation-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+
+

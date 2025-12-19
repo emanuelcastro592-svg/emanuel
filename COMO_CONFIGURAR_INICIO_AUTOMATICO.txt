@@ -1,0 +1,43 @@
+═══════════════════════════════════════════════════════════
+  CONFIGURAR INÍCIO AUTOMÁTICO - PASSO A PASSO
+═══════════════════════════════════════════════════════════
+
+Para o site iniciar automaticamente quando você reiniciar o PC:
+
+1. Encontre o arquivo:
+   CONFIGURAR-INICIO-AUTOMATICO-WINDOWS.bat
+
+2. Clique com BOTÃO DIREITO no arquivo
+
+3. Escolha: "Executar como administrador"
+
+4. Uma janela vai abrir pedindo permissão
+   → Clique em "Sim"
+
+5. Aguarde a mensagem de sucesso
+
+6. PRONTO! ✅
+
+Agora o site vai iniciar automaticamente toda vez que você
+reiniciar o computador!
+
+═══════════════════════════════════════════════════════════
+TESTAR:
+═══════════════════════════════════════════════════════════
+
+Para testar se funcionou:
+1. Reinicie o computador
+2. Aguarde o Windows iniciar completamente
+3. Abra o navegador
+4. Acesse: http://localhost:3000
+5. O site deve estar funcionando! ✅
+
+═══════════════════════════════════════════════════════════
+REMOVER (se quiser):
+═══════════════════════════════════════════════════════════
+
+Se você quiser remover o início automático:
+→ Dê duplo clique em: REMOVER-INICIO-AUTOMATICO.bat
+
+═══════════════════════════════════════════════════════════
+

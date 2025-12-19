@@ -1,0 +1,36 @@
+═══════════════════════════════════════════════════════════
+  SOLUÇÃO RÁPIDA - Arquivo Muito Grande
+═══════════════════════════════════════════════════════════
+
+O ZIP está muito grande (mais de 25MB).
+
+SOLUÇÃO 1 - REDUZIR TAMANHO (MAIS RÁPIDO):
+───────────────────────────────────────────
+
+1. Dê duplo clique em: REDUZIR_TAMANHO.bat
+
+2. Isso vai criar um ZIP menor: NEW-APP-LIGHT.zip
+
+3. Envie esse ZIP menor para o GitHub
+
+═══════════════════════════════════════════════════════════
+SOLUÇÃO 2 - USAR GIT (MELHOR):
+────────────────────────────────
+
+1. Instale Git: https://git-scm.com/download/win
+
+2. Dê duplo clique em: ENVIAR_COM_GIT.bat
+
+3. Siga as instruções
+
+4. PRONTO! (Sem limite de tamanho!)
+
+═══════════════════════════════════════════════════════════
+RECOMENDAÇÃO:
+═══════════════════════════════════════════════════════════
+
+Use a SOLUÇÃO 1 primeiro (mais rápida)!
+
+Se ainda for muito grande, use a SOLUÇÃO 2 (Git).
+
+═══════════════════════════════════════════════════════════

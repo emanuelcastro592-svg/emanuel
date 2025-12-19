@@ -1,0 +1,86 @@
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.action-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: all 0.2s;
+  background: transparent;
+  position: relative;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.action-btn-view {
+  color: #3b82f6;
+  background: #dbeafe;
+}
+
+.action-btn-view:hover {
+  background: #bfdbfe;
+  color: #2563eb;
+}
+
+.action-btn-edit {
+  color: #f59e0b;
+  background: #fef3c7;
+}
+
+.action-btn-edit:hover {
+  background: #fde68a;
+  color: #d97706;
+}
+
+.action-btn-delete {
+  color: #ef4444;
+  background: #fee2e2;
+}
+
+.action-btn-delete:hover {
+  background: #fecaca;
+  color: #dc2626;
+}
+
+.action-btn-custom {
+  color: #64748b;
+  background: #f1f5f9;
+}
+
+.action-btn-custom:hover {
+  background: #e2e8f0;
+  color: #475569;
+}
+
+.delete-confirm-content {
+  padding: 8px 0;
+}
+
+.delete-confirm-content p {
+  margin-bottom: 24px;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.delete-confirm-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+
+

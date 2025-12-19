@@ -1,0 +1,45 @@
+═══════════════════════════════════════════════════════════
+  🚀 DEPLOY DO BACKEND - FAÇA AGORA!
+═══════════════════════════════════════════════════════════
+
+PASSO A PASSO SUPER RÁPIDO:
+────────────────────────────
+
+1. Abra: https://render.com
+
+2. Clique em "Get Started for Free"
+   → Faça login com GitHub (mais fácil)
+
+3. Clique em "New +" → "Web Service"
+
+4. Conecte seu repositório GitHub
+   → Selecione o repositório do projeto
+
+5. Configure:
+   Name: personal-trainer-api
+   Build Command: npm install && cd client && npm install && cd ..
+   Start Command: node server/index.js
+   Plan: Free
+
+6. Em "Environment Variables", adicione:
+   PORT=5000
+   NODE_ENV=production
+   JWT_SECRET=uma-chave-secreta-super-segura-aqui
+
+7. Clique em "Create Web Service"
+
+8. AGUARDE 5-10 minutos
+
+9. Quando terminar, copie o URL:
+   https://personal-trainer-api.onrender.com
+
+═══════════════════════════════════════════════════════════
+PRONTO!
+═══════════════════════════════════════════════════════════
+
+Sua API estará no ar em:
+→ https://personal-trainer-api.onrender.com
+
+Depois me envie o URL e eu ajudo com o frontend! 🚀
+
+═══════════════════════════════════════════════════════════

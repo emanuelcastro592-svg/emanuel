@@ -1,0 +1,50 @@
+═══════════════════════════════════════════════════════════
+  PRÓXIMO PASSO - Extrair e Enviar Arquivos
+═══════════════════════════════════════════════════════════
+
+✅ O ZIP foi enviado, mas o Render precisa dos arquivos
+   DESCOMPACTADOS, não do ZIP!
+
+═══════════════════════════════════════════════════════════
+SOLUÇÃO:
+═══════════════════════════════════════════════════════════
+
+OPÇÃO 1 - Script Automático (RECOMENDADO):
+───────────────────────────────────────────
+
+1. Dê duplo clique em: EXTRAIR_E_ENVIAR.bat
+
+2. Isso vai:
+   - Extrair o ZIP
+   - Enviar os arquivos para o GitHub usando Git
+
+3. Se pedir Git:
+   - Baixe: https://git-scm.com/download/win
+   - Instale (deixe tudo padrão)
+   - Execute o script novamente
+
+═══════════════════════════════════════════════════════════
+OPÇÃO 2 - Manual (Se não tiver Git):
+─────────────────────────────────────
+
+1. Extraia o ZIP manualmente:
+   - Clique direito em NEW-APP-LIGHT.zip
+   - "Extrair Tudo..."
+   - Extraia na pasta do projeto
+
+2. No GitHub:
+   - Delete o arquivo ZIP (clique nele, depois "Delete")
+   - Clique em "Add file" -^> "Upload files"
+   - Arraste TODOS os arquivos da pasta do projeto
+   - Clique em "Commit changes"
+
+═══════════════════════════════════════════════════════════
+DEPOIS DE ENVIAR:
+═══════════════════════════════════════════════════════════
+
+1. Vá no Render.com
+2. Clique em "Manual Deploy"
+3. Selecione "Deploy latest commit"
+4. Aguarde o deploy terminar!
+
+═══════════════════════════════════════════════════════════

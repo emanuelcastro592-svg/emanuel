@@ -1,0 +1,50 @@
+═══════════════════════════════════════════════════════════
+  LISTA COMPLETA DE ARQUIVOS PARA UPLOAD
+═══════════════════════════════════════════════════════════
+
+VOCÊ JÁ TEM (3 arquivos):
+─────────────────────────
+✅ .env
+✅ package.json
+✅ package-lock.json
+
+FALTA ADICIONAR:
+────────────────
+
+1. PASTAS (IMPORTANTE!):
+   📁 server/ (pasta inteira)
+   📁 client/ (pasta inteira)
+
+2. ARQUIVOS DA RAIZ:
+   📄 README.md
+   📄 Procfile
+   📄 render.yaml
+   📄 .gitignore
+   📄 ecosystem.config.js
+
+═══════════════════════════════════════════════════════════
+COMO ADICIONAR:
+═══════════════════════════════════════════════════════════
+
+1. NÃO clique em "Commit changes" ainda!
+
+2. Abra a pasta: C:\Users\User\Downloads\NEW APP
+
+3. Selecione e ARRASTE para o GitHub:
+   
+   PASTAS (arraste a pasta inteira):
+   - server (pasta completa)
+   - client (pasta completa)
+   
+   ARQUIVOS:
+   - README.md
+   - Procfile
+   - render.yaml
+   - .gitignore
+   - ecosystem.config.js
+
+4. Aguarde todos aparecerem na lista
+
+5. DEPOIS clique em "Commit changes"
+
+═══════════════════════════════════════════════════════════

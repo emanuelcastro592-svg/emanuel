@@ -1,0 +1,71 @@
+═══════════════════════════════════════════════════════════
+  ✅ ZIP EXTRAÍDO COM SUCESSO!
+═══════════════════════════════════════════════════════════
+
+Agora você precisa enviar os arquivos para o GitHub.
+
+═══════════════════════════════════════════════════════════
+PASSO 1 - DELETAR O ZIP NO GITHUB:
+═══════════════════════════════════════════════════════════
+
+1. Abra: https://github.com/emanuelcastro592-svg/emanuel
+
+2. Clique no arquivo: NEW-APP-LIGHT.zip
+
+3. Clique no ícone de LIXEIRA (Delete)
+
+4. Digite: NEW-APP-LIGHT.zip
+
+5. Clique em "Commit changes"
+
+═══════════════════════════════════════════════════════════
+PASSO 2 - ENVIAR OS ARQUIVOS:
+═══════════════════════════════════════════════════════════
+
+1. No mesmo repositório, clique no botão verde:
+   "Add file" -^> "Upload files"
+
+2. Abra a pasta: c:\Users\User\Downloads\NEW APP
+
+3. Selecione TODOS os arquivos e pastas:
+   - server (pasta)
+   - client (pasta)
+   - package.json
+   - package-lock.json
+   - README.md
+   - Procfile
+   - render.yaml
+   - .gitignore
+   - ecosystem.config.js
+   - E todos os outros arquivos .md, .bat, etc.
+
+   ⚠️ NÃO selecione:
+   - NEW-APP-LIGHT.zip
+   - node_modules (se existir)
+   - temp_extract (se existir)
+
+4. Arraste os arquivos para a área de upload do GitHub
+
+5. Role a página para baixo
+
+6. Digite: "Initial commit - all files"
+
+7. Clique em "Commit changes" (botão verde)
+
+8. Aguarde terminar (pode demorar alguns minutos)
+
+═══════════════════════════════════════════════════════════
+PASSO 3 - DEPLOY NO RENDER:
+═══════════════════════════════════════════════════════════
+
+1. Vá em: https://dashboard.render.com
+
+2. Clique no seu serviço (personal-trainer-api)
+
+3. Clique em "Manual Deploy"
+
+4. Selecione "Deploy latest commit"
+
+5. Aguarde o deploy terminar!
+
+═══════════════════════════════════════════════════════════

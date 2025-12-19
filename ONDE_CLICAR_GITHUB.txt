@@ -1,0 +1,47 @@
+═══════════════════════════════════════════════════════════
+  ONDE CLICAR NO GITHUB - PASSO A PASSO VISUAL
+═══════════════════════════════════════════════════════════
+
+VOCÊ ESTÁ NA PÁGINA CERTA! ✅
+
+OLHE PARA A ÁREA AZUL CLARA:
+─────────────────────────────
+
+Na página do GitHub, você verá uma caixa AZUL CLARA que diz:
+
+"Quick setup — if you've done this kind of thing before"
+
+DENTRO DESSA CAIXA AZUL, procure por:
+
+"Get started by creating a new file or uploading an existing file."
+
+TEM UM LINK AZUL que diz:
+→ "uploading an existing file"
+→ (está em negrito/azul, é clicável)
+
+CLIQUE NESSE LINK! ✅
+
+═══════════════════════════════════════════════════════════
+SE NÃO ENCONTRAR:
+═══════════════════════════════════════════════════════════
+
+Procure por um botão verde que diz:
+"Add file" ou "Create new file"
+
+Clique nele, depois procure por:
+"upload files" ou "uploading an existing file"
+
+═══════════════════════════════════════════════════════════
+OUTRA OPÇÃO (MAIS FÁCIL):
+═══════════════════════════════════════════════════════════
+
+1. Procure por um botão verde no canto superior direito
+   que diz: "Add file"
+
+2. Clique nele
+
+3. Vai abrir um menu, escolha: "Upload files"
+
+4. Arraste os arquivos!
+
+═══════════════════════════════════════════════════════════

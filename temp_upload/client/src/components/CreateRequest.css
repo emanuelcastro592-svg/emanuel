@@ -1,0 +1,46 @@
+.trainer-info {
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.trainer-info h3 {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.trainer-info p {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 5px 0;
+}
+
+.service-description {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.service-description p {
+  margin: 0;
+  color: #555;
+}
+
+.form-group small {
+  display: block;
+  margin-top: 5px;
+  color: #666;
+  font-size: 14px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+
+
+
+
+

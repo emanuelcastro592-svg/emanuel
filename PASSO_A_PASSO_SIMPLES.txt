@@ -1,0 +1,56 @@
+═══════════════════════════════════════════════════════════
+  GUIA SUPER SIMPLES - INÍCIO AUTOMÁTICO
+═══════════════════════════════════════════════════════════
+
+OPÇÃO 1: FAZER AGORA (RECOMENDADO)
+───────────────────────────────────
+
+1. Clique com BOTÃO DIREITO no arquivo:
+   CONFIGURAR-INICIO-AUTOMATICO.bat
+
+2. Clique em: "Executar como administrador"
+
+3. Uma janela preta vai abrir
+   → Aperte qualquer tecla (Enter)
+
+4. Vai aparecer um comando na tela tipo:
+   "pm2 startup" ou algo parecido
+
+5. COPIE esse comando (selecione e Ctrl+C)
+
+6. COLE na mesma janela (Ctrl+V)
+
+7. Aperte ENTER
+
+8. PRONTO! ✅
+
+
+OPÇÃO 2: NÃO FAZER NADA (MAIS FÁCIL)
+─────────────────────────────────────
+
+Se você não quiser configurar agora, TUDO BEM!
+
+O site já está funcionando normalmente.
+
+Quando você quiser usar o site:
+→ Só executar: INICIAR-SITE-PM2.bat
+
+É só isso! Não precisa fazer mais nada.
+
+
+═══════════════════════════════════════════════════════════
+RESUMO:
+═══════════════════════════════════════════════════════════
+
+✅ O site JÁ ESTÁ FUNCIONANDO AGORA
+✅ Você pode usar normalmente
+✅ Não precisa fazer nada se não quiser
+
+Se quiser que inicie sozinho quando ligar o PC:
+→ Siga a OPÇÃO 1 acima
+
+Se não quiser:
+→ Não faça nada, está tudo certo!
+
+═══════════════════════════════════════════════════════════
+

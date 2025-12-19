@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: personal-trainer-api
+    env: node
+    buildCommand: npm install && cd client && npm install && cd ..
+    startCommand: node server/index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DOMAIN
+        sync: false
+      - key: CLIENT_URL
+        sync: false
+      - key: API_URL
+        sync: false
