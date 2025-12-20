@@ -154,12 +154,11 @@ const startServer = async () => {
       console.log('📁 Servindo de:', buildPath);
       console.log('📄 Index path:', indexPath);
       
-      // Servir arquivos estáticos do React ANTES das rotas da API
-      // Mas as rotas da API já foram registradas acima, então está OK
+      // Servir arquivos estáticos do React
+      // As rotas da API já foram registradas acima, então está OK
       app.use(express.static(buildPath, {
         maxAge: '1y',
-        etag: false,
-        index: false // Não servir index.html automaticamente, vamos fazer manualmente
+        etag: false
       }));
       
       // Rota catch-all para SPA - DEVE ser a ÚLTIMA rota
