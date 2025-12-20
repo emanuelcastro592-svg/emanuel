@@ -71,14 +71,25 @@ setTimeout(() => {
 
 // Servir arquivos estáticos do React em produção
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
+  const buildPath = path.join(__dirname, '../client/build');
+  const indexPath = path.join(buildPath, 'index.html');
   
-  // Todas as rotas que não são API, servir o React
-  app.get('*', (req, res) => {
-    if (!req.path.startsWith('/api')) {
-      res.sendFile(path.join(__dirname, '../client/build/index.html'));
-    }
-  });
+  // Verificar se o build existe
+  const fs = require('fs');
+  if (fs.existsSync(buildPath) && fs.existsSync(indexPath)) {
+    app.use(express.static(buildPath));
+    
+    // Todas as rotas que não são API, servir o React
+    app.get('*', (req, res) => {
+      if (!req.path.startsWith('/api')) {
+        res.sendFile(indexPath);
+      }
+    });
+    console.log('✅ Frontend React servido de:', buildPath);
+  } else {
+    console.warn('⚠️ Frontend build não encontrado em:', buildPath);
+    console.warn('⚠️ Servindo apenas API. Frontend não disponível.');
+  }
 }
 
 // Rota de teste
