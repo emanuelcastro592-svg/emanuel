@@ -153,13 +153,33 @@ const startServer = async () => {
     if (buildPath && indexPath) {
       console.log('📁 Servindo de:', buildPath);
       console.log('📄 Index path:', indexPath);
+      console.log('📄 Index path absoluto:', path.resolve(indexPath));
+      
+      // Verificar se o arquivo realmente existe
+      if (!fs.existsSync(indexPath)) {
+        console.error('❌ ERRO: index.html não existe no caminho:', indexPath);
+      } else {
+        console.log('✅ index.html confirmado que existe!');
+      }
       
       // Servir arquivos estáticos do React
       // As rotas da API já foram registradas acima, então está OK
       app.use(express.static(buildPath, {
         maxAge: '1y',
-        etag: false
+        etag: false,
+        dotfiles: 'ignore'
       }));
+      
+      // Rota para a raiz - servir index.html
+      app.get('/', (req, res) => {
+        console.log('📄 Servindo index.html para rota raiz');
+        res.sendFile(path.resolve(indexPath), (err) => {
+          if (err) {
+            console.error('❌ Erro ao servir index.html na raiz:', err);
+            res.status(500).send('Erro ao carregar página');
+          }
+        });
+      });
       
       // Rota catch-all para SPA - DEVE ser a ÚLTIMA rota
       app.get('*', (req, res, next) => {
@@ -167,7 +187,12 @@ const startServer = async () => {
         if (req.path.startsWith('/api')) {
           return next();
         }
+        // Ignorar arquivos estáticos (js, css, etc)
+        if (req.path.match(/\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$/)) {
+          return next();
+        }
         // Servir index.html para todas as outras rotas (SPA routing)
+        console.log('📄 Servindo index.html para:', req.path);
         res.sendFile(path.resolve(indexPath), (err) => {
           if (err) {
             console.error('❌ Erro ao servir index.html:', err);
@@ -204,6 +229,9 @@ const startServer = async () => {
       } catch (e) {
         console.error('   Erro:', e.message);
       }
+      
+      // Tentar servir mesmo sem encontrar o build - pode estar em outro lugar
+      console.warn('⚠️ Tentando servir build mesmo sem encontrar...');
       
       // Criar uma página HTML simples como fallback
       const fallbackHTML = `
