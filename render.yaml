@@ -2,7 +2,7 @@ services:
   - type: web
     name: personal-trainer-api
     env: node
-    buildCommand: npm install && cd client && npm install && CI=false GENERATE_SOURCEMAP=false npm run build && cd .. && pwd && ls -la && echo "=== VERIFICANDO BUILD ===" && if [ -d "client/build" ]; then echo "✅ Diretório client/build existe" && ls -la client/build/ | head -10 && if [ -f "client/build/index.html" ]; then echo "✅ index.html encontrado!"; else echo "❌ index.html NÃO encontrado!"; exit 1; fi; else echo "❌ Diretório client/build NÃO existe!" && echo "Conteúdo atual:" && ls -la && exit 1; fi
+    buildCommand: npm install && cd client && npm install && echo "=== INICIANDO BUILD DO REACT ===" && CI=false GENERATE_SOURCEMAP=false npm run build && echo "=== BUILD CONCLUÍDO ===" && cd .. && echo "=== VERIFICANDO BUILD ===" && pwd && echo "Conteúdo da raiz:" && ls -la && if [ -d "client/build" ]; then echo "✅ Diretório client/build existe!" && echo "Conteúdo de client/build:" && ls -la client/build/ && if [ -f "client/build/index.html" ]; then echo "✅✅✅ index.html ENCONTRADO! ✅✅✅"; else echo "❌ index.html NÃO encontrado em client/build!" && find . -name "index.html" -type f 2>/dev/null | head -5 && exit 1; fi; else echo "❌ Diretório client/build NÃO existe!" && echo "Procurando build em outros lugares..." && find . -type d -name "build" 2>/dev/null && exit 1; fi
     startCommand: node server/index.js
     envVars:
       - key: NODE_ENV

@@ -101,16 +101,41 @@ const startServer = async () => {
     
     // Tentar múltiplos caminhos possíveis para o build
     // No Render, o diretório de trabalho é /opt/render/project/src
+    const baseDir = process.cwd();
     const possibleBuildPaths = [
-      path.join(process.cwd(), 'client', 'build'),  // Caminho mais comum
-      path.join(process.cwd(), 'build'),            // Build na raiz
-      path.join(__dirname, '..', 'client', 'build'), // Relativo ao server/
+      path.join(baseDir, 'client', 'build'),        // Caminho mais comum
+      path.join(baseDir, 'build'),                  // Build na raiz
+      path.join(__dirname, '..', 'client', 'build'),  // Relativo ao server/
       path.join(__dirname, '..', '..', 'client', 'build'), // Relativo ao server/
-      '/opt/render/project/src/client/build',       // Render padrão
-      '/opt/render/project/src/build',              // Build na raiz no Render
-      path.resolve(process.cwd(), 'client', 'build'), // Absoluto
-      path.resolve(process.cwd(), 'build')          // Absoluto na raiz
+      '/opt/render/project/src/client/build',        // Render padrão
+      '/opt/render/project/src/build',               // Build na raiz no Render
+      path.resolve(baseDir, 'client', 'build'),     // Absoluto
+      path.resolve(baseDir, 'build')                // Absoluto na raiz
     ];
+    
+    // Tentar encontrar build recursivamente
+    const findBuildRecursively = (dir, maxDepth = 3, currentDepth = 0) => {
+      if (currentDepth >= maxDepth) return null;
+      try {
+        const entries = fs.readdirSync(dir, { withFileTypes: true });
+        for (const entry of entries) {
+          if (entry.isDirectory() && entry.name === 'build') {
+            const buildPath = path.join(dir, entry.name);
+            const indexPath = path.join(buildPath, 'index.html');
+            if (fs.existsSync(indexPath)) {
+              return buildPath;
+            }
+          }
+          if (entry.isDirectory() && !entry.name.startsWith('.') && entry.name !== 'node_modules') {
+            const found = findBuildRecursively(path.join(dir, entry.name), maxDepth, currentDepth + 1);
+            if (found) return found;
+          }
+        }
+      } catch (e) {
+        // Ignorar erros
+      }
+      return null;
+    };
     
     console.log('🔍 Procurando build do React...');
     console.log('📁 process.cwd():', process.cwd());
@@ -147,6 +172,17 @@ const startServer = async () => {
             // Ignorar
           }
         }
+      }
+    }
+    
+    // Se não encontrou, tentar busca recursiva
+    if (!buildPath) {
+      console.log('🔍 Build não encontrado nos caminhos padrão. Buscando recursivamente...');
+      const recursiveBuild = findBuildRecursively(baseDir);
+      if (recursiveBuild) {
+        buildPath = recursiveBuild;
+        indexPath = path.join(recursiveBuild, 'index.html');
+        console.log('✅ Build encontrado recursivamente em:', buildPath);
       }
     }
     
