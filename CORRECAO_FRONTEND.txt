@@ -1,0 +1,78 @@
+═══════════════════════════════════════════════════════════
+  CORREÇÃO DO FRONTEND - "Cannot GET /"
+═══════════════════════════════════════════════════════════
+
+PROBLEMA IDENTIFICADO:
+═══════════════════════════════════════════════════════════
+
+❌ O erro "Cannot GET /" aparece porque:
+   1. O build do React não está sendo encontrado
+   2. Não há rota definida para servir a raiz "/"
+
+═══════════════════════════════════════════════════════════
+SOLUÇÃO APLICADA:
+═══════════════════════════════════════════════════════════
+
+✅ Simplifiquei o buildCommand no render.yaml
+   → Removi comandos complexos que podem falhar
+   → Agora é mais direto: npm install && cd client && npm install && CI=false npm run build
+
+✅ Adicionei rota de fallback para "/"
+   → Se o build não existir, mostra informações da API
+   → Se o build existir, serve o React normalmente
+
+═══════════════════════════════════════════════════════════
+O QUE FOI FEITO:
+═══════════════════════════════════════════════════════════
+
+1. buildCommand simplificado
+2. Rota de fallback adicionada
+3. Código enviado para GitHub
+
+═══════════════════════════════════════════════════════════
+PRÓXIMO PASSO:
+═══════════════════════════════════════════════════════════
+
+🔄 O Render vai fazer um novo deploy automaticamente.
+
+⏱️ Aguarde alguns minutos (5-10 minutos).
+
+📋 Depois, verifique:
+
+1. Se o build funcionou:
+   → Acesse: https://personal-trainer-api-8z6c.onrender.com
+   → Deve aparecer o site React completo
+
+2. Se o build não funcionou:
+   → Acesse: https://personal-trainer-api-8z6c.onrender.com
+   → Deve aparecer informações da API (não mais "Cannot GET /")
+
+3. Verifique os logs:
+   → Vá em "Logs" no Render
+   → Procure por:
+      - "✅ Diretório build encontrado!"
+      - "✅ index.html encontrado!"
+      - "✅ Frontend React servido de: ..."
+      OU
+      - "⚠️ Frontend build não encontrado..."
+
+═══════════════════════════════════════════════════════════
+TESTAR:
+═══════════════════════════════════════════════════════════
+
+Depois do deploy, teste:
+
+1. https://personal-trainer-api-8z6c.onrender.com
+   → Deve mostrar o site OU informações da API
+
+2. https://personal-trainer-api-8z6c.onrender.com/api/test
+   → Deve mostrar: {"message": "API funcionando!", ...}
+
+═══════════════════════════════════════════════════════════
+SE AINDA NÃO FUNCIONAR:
+═══════════════════════════════════════════════════════════
+
+Me mostre os logs do deploy mais recente.
+Vou verificar se o build está sendo criado corretamente.
+
+═══════════════════════════════════════════════════════════

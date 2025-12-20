@@ -79,70 +79,110 @@ const startServer = async () => {
     console.log('✅ Migrações concluídas!');
     
     // Servir arquivos estáticos do React em produção
-    if (process.env.NODE_ENV === 'production') {
-      const fs = require('fs');
-      const buildPath = path.join(__dirname, '../client/build');
-      const indexPath = path.join(buildPath, 'index.html');
+    const fs = require('fs');
+    const buildPath = path.join(__dirname, '../client/build');
+    const indexPath = path.join(buildPath, 'index.html');
+    
+    // Verificar se o build existe
+    if (fs.existsSync(buildPath) && fs.existsSync(indexPath)) {
+      console.log('✅ Frontend build encontrado!');
+      console.log('📁 Servindo de:', buildPath);
       
-      console.log('🔍 Verificando build do frontend...');
-      console.log('📁 Caminho esperado:', buildPath);
-      console.log('📁 Caminho absoluto:', path.resolve(buildPath));
-      console.log('📁 Diretório atual:', __dirname);
+      // Servir arquivos estáticos do React
+      app.use(express.static(buildPath, {
+        maxAge: '1y',
+        etag: false
+      }));
       
-      // Listar conteúdo do diretório client se existir
-      const clientDir = path.join(__dirname, '../client');
-      if (fs.existsSync(clientDir)) {
-        console.log('📂 Conteúdo de client/:', fs.readdirSync(clientDir).join(', '));
-      } else {
-        console.warn('⚠️ Diretório client/ não encontrado!');
-      }
-      
-      // Verificar se o build existe
-      if (fs.existsSync(buildPath)) {
-        console.log('✅ Diretório build encontrado!');
-        if (fs.existsSync(indexPath)) {
-          console.log('✅ index.html encontrado!');
-          app.use(express.static(buildPath));
-          
-          // Todas as rotas que não são API, servir o React
-          app.get('*', (req, res) => {
-            if (!req.path.startsWith('/api')) {
-              res.sendFile(indexPath);
-            }
-          });
-          console.log('✅ Frontend React servido de:', buildPath);
-        } else {
-          console.warn('⚠️ index.html não encontrado em:', indexPath);
-          console.warn('📂 Conteúdo de build/:', fs.existsSync(buildPath) ? fs.readdirSync(buildPath).join(', ') : 'diretório não existe');
+      // Todas as rotas que não são API, servir o React
+      app.get('*', (req, res, next) => {
+        if (req.path.startsWith('/api')) {
+          return next();
         }
-      } else {
-        console.warn('⚠️ Frontend build não encontrado em:', buildPath);
-        console.warn('⚠️ Servindo apenas API. Frontend não disponível.');
-        console.warn('💡 Verifique se o buildCommand no render.yaml está executando corretamente.');
-        
-        // Rota de fallback para a raiz
-        app.get('/', (req, res) => {
-          res.json({
-            message: 'API está funcionando!',
-            status: 'online',
-            frontend: 'Frontend não disponível. Verifique os logs do build.',
-            api: {
-              test: '/api/test',
-              auth: '/api/auth',
-              trainers: '/api/trainers'
-            }
-          });
-        });
-      }
-    } else {
-      // Em desenvolvimento, também adicionar rota de fallback
-      app.get('/', (req, res) => {
-        res.json({
-          message: 'API está funcionando!',
-          status: 'online',
-          environment: 'development'
-        });
+        res.sendFile(indexPath);
       });
+      
+      console.log('✅ Frontend React configurado e servindo!');
+    } else {
+      console.warn('⚠️ Frontend build não encontrado.');
+      console.warn('📁 Caminho esperado:', buildPath);
+      console.warn('📁 Caminho absoluto:', path.resolve(buildPath));
+      
+      // Criar uma página HTML simples como fallback
+      const fallbackHTML = `
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Trainer API</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      min-height: 100vh;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+    }
+    h1 { margin-top: 0; }
+    .status { 
+      background: rgba(76, 175, 80, 0.3);
+      padding: 15px;
+      border-radius: 5px;
+      margin: 20px 0;
+    }
+    .endpoint {
+      background: rgba(0, 0, 0, 0.2);
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      font-family: monospace;
+    }
+    a {
+      color: #fff;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🚀 Personal Trainer API</h1>
+    <div class="status">
+      <strong>✅ Status: Online</strong>
+    </div>
+    <p>A API está funcionando corretamente!</p>
+    <h2>Endpoints disponíveis:</h2>
+    <div class="endpoint">
+      <a href="/api/test">GET /api/test</a> - Testar API
+    </div>
+    <div class="endpoint">
+      POST /api/auth/register - Registrar usuário
+    </div>
+    <div class="endpoint">
+      POST /api/auth/login - Fazer login
+    </div>
+    <div class="endpoint">
+      <a href="/api/trainers">GET /api/trainers</a> - Listar trainers
+    </div>
+    <p><strong>Nota:</strong> O frontend React não está disponível. Verifique os logs do build.</p>
+  </div>
+</body>
+</html>`;
+      
+      // Rota de fallback para a raiz
+      app.get('/', (req, res) => {
+        res.send(fallbackHTML);
+      });
+      
+      console.warn('⚠️ Servindo página de fallback na raiz.');
     }
 
     // Rota de teste
