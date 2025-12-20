@@ -99,6 +99,30 @@ const startServer = async () => {
     // Servir arquivos estáticos do React em produção
     const fs = require('fs');
     
+    // Função para encontrar build recursivamente
+    const findBuildRecursively = (dir, maxDepth = 3, currentDepth = 0) => {
+      if (currentDepth >= maxDepth) return null;
+      try {
+        const entries = fs.readdirSync(dir, { withFileTypes: true });
+        for (const entry of entries) {
+          if (entry.isDirectory() && entry.name === 'build') {
+            const buildPath = path.join(dir, entry.name);
+            const indexPath = path.join(buildPath, 'index.html');
+            if (fs.existsSync(indexPath)) {
+              return buildPath;
+            }
+          }
+          if (entry.isDirectory() && !entry.name.startsWith('.') && entry.name !== 'node_modules' && entry.name !== 'server') {
+            const found = findBuildRecursively(path.join(dir, entry.name), maxDepth, currentDepth + 1);
+            if (found) return found;
+          }
+        }
+      } catch (e) {
+        // Ignorar erros
+      }
+      return null;
+    };
+    
     // Tentar múltiplos caminhos possíveis para o build
     // No Render, o diretório de trabalho é /opt/render/project/src
     const baseDir = process.cwd();
@@ -112,30 +136,6 @@ const startServer = async () => {
       path.resolve(baseDir, 'client', 'build'),     // Absoluto
       path.resolve(baseDir, 'build')                // Absoluto na raiz
     ];
-    
-    // Tentar encontrar build recursivamente
-    const findBuildRecursively = (dir, maxDepth = 3, currentDepth = 0) => {
-      if (currentDepth >= maxDepth) return null;
-      try {
-        const entries = fs.readdirSync(dir, { withFileTypes: true });
-        for (const entry of entries) {
-          if (entry.isDirectory() && entry.name === 'build') {
-            const buildPath = path.join(dir, entry.name);
-            const indexPath = path.join(buildPath, 'index.html');
-            if (fs.existsSync(indexPath)) {
-              return buildPath;
-            }
-          }
-          if (entry.isDirectory() && !entry.name.startsWith('.') && entry.name !== 'node_modules') {
-            const found = findBuildRecursively(path.join(dir, entry.name), maxDepth, currentDepth + 1);
-            if (found) return found;
-          }
-        }
-      } catch (e) {
-        // Ignorar erros
-      }
-      return null;
-    };
     
     console.log('🔍 Procurando build do React...');
     console.log('📁 process.cwd():', process.cwd());
