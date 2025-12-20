@@ -2,7 +2,7 @@ services:
   - type: web
     name: personal-trainer-api
     env: node
-    buildCommand: npm install && cd client && npm install && CI=false GENERATE_SOURCEMAP=false npm run build && cd .. && echo "=== VERIFICANDO BUILD ===" && ls -la client/build/ 2>/dev/null || echo "Build não encontrado em client/build" && find . -name "index.html" -path "*/build/*" 2>/dev/null | head -5
+    buildCommand: npm install && cd client && npm install && CI=false GENERATE_SOURCEMAP=false npm run build && cd .. && echo "=== VERIFICANDO BUILD ===" && if [ -d "client/build" ]; then echo "✅ Build encontrado em client/build" && ls -la client/build/ | head -10; else echo "❌ Build NÃO encontrado em client/build"; fi && pwd && ls -la
     startCommand: node server/index.js
     envVars:
       - key: NODE_ENV

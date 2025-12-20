@@ -152,11 +152,14 @@ const startServer = async () => {
     
     if (buildPath && indexPath) {
       console.log('📁 Servindo de:', buildPath);
+      console.log('📄 Index path:', indexPath);
       
-      // Servir arquivos estáticos do React
+      // Servir arquivos estáticos do React ANTES das rotas da API
+      // Mas as rotas da API já foram registradas acima, então está OK
       app.use(express.static(buildPath, {
         maxAge: '1y',
-        etag: false
+        etag: false,
+        index: false // Não servir index.html automaticamente, vamos fazer manualmente
       }));
       
       // Rota catch-all para SPA - DEVE ser a ÚLTIMA rota
@@ -168,17 +171,40 @@ const startServer = async () => {
         // Servir index.html para todas as outras rotas (SPA routing)
         res.sendFile(path.resolve(indexPath), (err) => {
           if (err) {
-            console.error('Erro ao servir index.html:', err);
+            console.error('❌ Erro ao servir index.html:', err);
+            console.error('   Path tentado:', indexPath);
             next(err);
+          } else {
+            console.log('✅ index.html servido com sucesso para:', req.path);
           }
         });
       });
       
       console.log('✅ Frontend React configurado e servindo!');
     } else {
-      console.warn('⚠️ Frontend build não encontrado em nenhum dos caminhos!');
-      console.warn('📁 Caminhos testados:');
-      possibleBuildPaths.forEach(p => console.warn('   -', p));
+      console.error('❌ Frontend build não encontrado em nenhum dos caminhos!');
+      console.error('📁 Caminhos testados:');
+      possibleBuildPaths.forEach(p => {
+        const exists = fs.existsSync(p);
+        console.error(`   ${exists ? '✅' : '❌'} ${p} ${exists ? '(existe mas sem index.html)' : '(não existe)'}`);
+        if (exists) {
+          try {
+            const files = fs.readdirSync(p);
+            console.error(`      Conteúdo: ${files.join(', ')}`);
+          } catch (e) {
+            console.error(`      Erro ao ler: ${e.message}`);
+          }
+        }
+      });
+      
+      // Tentar listar diretório atual
+      console.error('📂 Conteúdo do diretório atual:');
+      try {
+        const currentFiles = fs.readdirSync(process.cwd());
+        console.error('   ', currentFiles.join(', '));
+      } catch (e) {
+        console.error('   Erro:', e.message);
+      }
       
       // Criar uma página HTML simples como fallback
       const fallbackHTML = `
