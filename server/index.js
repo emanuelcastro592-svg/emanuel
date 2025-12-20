@@ -60,53 +60,66 @@ app.use('/api/users', usersRoutes);
 const db = require('./database/db');
 const { runMigrations } = require('./database/migrations');
 
-// Inicializar banco e aguardar antes de executar migrações
-db.init();
-// Executar migrações após inicialização (com delay maior para garantir que tabelas foram criadas)
-setTimeout(() => {
-  runMigrations().catch(err => {
-    console.error('Erro ao executar migrações:', err);
-  });
-}, 2000);
-
-// Servir arquivos estáticos do React em produção
-if (process.env.NODE_ENV === 'production') {
-  const buildPath = path.join(__dirname, '../client/build');
-  const indexPath = path.join(buildPath, 'index.html');
-  
-  // Verificar se o build existe
-  const fs = require('fs');
-  if (fs.existsSync(buildPath) && fs.existsSync(indexPath)) {
-    app.use(express.static(buildPath));
+// Função para inicializar tudo antes de iniciar o servidor
+const startServer = async () => {
+  try {
+    console.log('🔄 Inicializando banco de dados...');
+    await db.init();
+    console.log('✅ Banco de dados inicializado!');
     
-    // Todas as rotas que não são API, servir o React
-    app.get('*', (req, res) => {
-      if (!req.path.startsWith('/api')) {
-        res.sendFile(indexPath);
+    console.log('🔄 Executando migrações...');
+    await runMigrations();
+    console.log('✅ Migrações concluídas!');
+    
+    // Servir arquivos estáticos do React em produção
+    if (process.env.NODE_ENV === 'production') {
+      const buildPath = path.join(__dirname, '../client/build');
+      const indexPath = path.join(buildPath, 'index.html');
+      
+      // Verificar se o build existe
+      const fs = require('fs');
+      if (fs.existsSync(buildPath) && fs.existsSync(indexPath)) {
+        app.use(express.static(buildPath));
+        
+        // Todas as rotas que não são API, servir o React
+        app.get('*', (req, res) => {
+          if (!req.path.startsWith('/api')) {
+            res.sendFile(indexPath);
+          }
+        });
+        console.log('✅ Frontend React servido de:', buildPath);
+      } else {
+        console.warn('⚠️ Frontend build não encontrado em:', buildPath);
+        console.warn('⚠️ Servindo apenas API. Frontend não disponível.');
       }
+    }
+
+    // Rota de teste
+    app.get('/api/test', (req, res) => {
+      res.json({ 
+        message: 'API funcionando!',
+        domain: process.env.DOMAIN || 'localhost',
+        environment: process.env.NODE_ENV || 'development'
+      });
     });
-    console.log('✅ Frontend React servido de:', buildPath);
-  } else {
-    console.warn('⚠️ Frontend build não encontrado em:', buildPath);
-    console.warn('⚠️ Servindo apenas API. Frontend não disponível.');
-  }
-}
 
-// Rota de teste
-app.get('/api/test', (req, res) => {
-  res.json({ 
-    message: 'API funcionando!',
-    domain: process.env.DOMAIN || 'localhost',
-    environment: process.env.NODE_ENV || 'development'
-  });
-});
-
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
-  if (process.env.DOMAIN) {
-    console.log(`Domínio configurado: ${process.env.DOMAIN}`);
+    // Iniciar servidor apenas após tudo estar pronto
+    app.listen(PORT, '0.0.0.0', () => {
+      console.log(`✅ Servidor rodando na porta ${PORT}`);
+      if (process.env.DOMAIN) {
+        console.log(`🌐 Domínio configurado: ${process.env.DOMAIN}`);
+      }
+      console.log('🚀 Aplicação pronta para receber requisições!');
+    });
+  } catch (error) {
+    console.error('❌ Erro fatal ao inicializar aplicação:', error);
+    console.error('Stack trace:', error.stack);
+    process.exit(1);
   }
-});
+};
+
+// Iniciar tudo
+startServer();
 
 
 
