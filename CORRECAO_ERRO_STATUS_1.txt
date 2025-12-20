@@ -1,0 +1,76 @@
+═══════════════════════════════════════════════════════════
+  CORREÇÃO DO ERRO "STATUS 1 WHILE RUNNING"
+═══════════════════════════════════════════════════════════
+
+PROBLEMA IDENTIFICADO:
+═══════════════════════════════════════════════════════════
+
+❌ O servidor estava tentando iniciar ANTES do banco de
+   dados estar pronto!
+
+❌ A função db.init() é assíncrona, mas não estava sendo
+   aguardada (await).
+
+❌ Isso causava o erro "Exited with status 1 while running
+   your code" porque o servidor falhava ao tentar usar o
+   banco antes dele estar inicializado.
+
+═══════════════════════════════════════════════════════════
+SOLUÇÃO APLICADA:
+═══════════════════════════════════════════════════════════
+
+✅ Criei função startServer() que:
+   1. Aguarda db.init() completar
+   2. Aguarda runMigrations() completar
+   3. Configura o frontend React
+   4. SÓ DEPOIS inicia o servidor HTTP
+
+✅ Adicionei tratamento de erros robusto:
+   - Se algo falhar, mostra o erro completo
+   - Processo sai com código 1 para o Render detectar
+
+✅ Adicionei logs detalhados para debug:
+   - Mostra cada etapa da inicialização
+   - Facilita identificar onde está falhando
+
+═══════════════════════════════════════════════════════════
+O QUE MUDOU:
+═══════════════════════════════════════════════════════════
+
+ANTES:
+  db.init();  // Não aguardava!
+  setTimeout(...);  // Gambiarra com delay
+  app.listen(...);  // Iniciava imediatamente
+
+AGORA:
+  async startServer() {
+    await db.init();  // Aguarda completar!
+    await runMigrations();  // Aguarda completar!
+    app.listen(...);  // Só inicia depois!
+  }
+
+═══════════════════════════════════════════════════════════
+PRÓXIMO PASSO:
+═══════════════════════════════════════════════════════════
+
+✅ Código corrigido e enviado para GitHub!
+
+🔄 O Render vai fazer um novo deploy automaticamente.
+
+⏱️ Aguarde alguns minutos e verifique:
+   1. Vá em "Events" - veja se novo deploy começou
+   2. Vá em "Logs" - acompanhe o progresso
+   3. Procure por mensagens como:
+      - "🔄 Inicializando banco de dados..."
+      - "✅ Banco de dados inicializado!"
+      - "✅ Servidor rodando na porta 5000"
+      - "🚀 Aplicação pronta para receber requisições!"
+
+═══════════════════════════════════════════════════════════
+SE AINDA FALHAR:
+═══════════════════════════════════════════════════════════
+
+Me mostre os logs completos do deploy mais recente.
+Agora os logs vão mostrar EXATAMENTE onde está falhando!
+
+═══════════════════════════════════════════════════════════

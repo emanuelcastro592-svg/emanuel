@@ -38,12 +38,45 @@ pool.on('connect', () => {
 
 pool.on('error', (err) => {
   console.error('❌ Erro inesperado no cliente PostgreSQL:', err);
-  process.exit(-1);
+  console.error('❌ Detalhes do erro:', err.message);
+  console.error('❌ Stack:', err.stack);
+  // Não fazer exit aqui, deixar o erro ser tratado no init()
 });
+
+// Função para testar conexão antes de inicializar
+const testConnection = async () => {
+  try {
+    console.log('🔄 Testando conexão com banco de dados...');
+    if (process.env.DATABASE_URL) {
+      console.log('📝 Usando DATABASE_URL (Render/Cloud)');
+    } else {
+      console.log('📝 Usando configuração local:', {
+        host: poolConfig.host,
+        port: poolConfig.port,
+        database: poolConfig.database,
+        user: poolConfig.user
+      });
+    }
+    
+    const result = await pool.query('SELECT NOW() as current_time, version() as pg_version');
+    console.log('✅ Conexão com banco de dados estabelecida!');
+    console.log('⏰ Hora do servidor:', result.rows[0].current_time);
+    return true;
+  } catch (error) {
+    console.error('❌ Erro ao conectar ao banco de dados:', error.message);
+    console.error('❌ Código do erro:', error.code);
+    console.error('❌ Detalhes completos:', error);
+    throw error;
+  }
+};
 
 // Função para inicializar o banco de dados (criar tabelas)
 const init = async () => {
   try {
+    // Primeiro, testar a conexão
+    await testConnection();
+    
+    console.log('🔄 Criando tabelas...');
     // Criar tabela de usuários (personal trainers e clientes)
     await pool.query(`
       CREATE TABLE IF NOT EXISTS users (

@@ -63,6 +63,13 @@ const { runMigrations } = require('./database/migrations');
 // Função para inicializar tudo antes de iniciar o servidor
 const startServer = async () => {
   try {
+    console.log('🚀 Iniciando aplicação...');
+    console.log('📋 Variáveis de ambiente:');
+    console.log('   - NODE_ENV:', process.env.NODE_ENV || 'não definido');
+    console.log('   - PORT:', process.env.PORT || '5000');
+    console.log('   - DATABASE_URL:', process.env.DATABASE_URL ? '✅ definido' : '❌ não definido');
+    console.log('   - JWT_SECRET:', process.env.JWT_SECRET ? '✅ definido' : '❌ não definido');
+    
     console.log('🔄 Inicializando banco de dados...');
     await db.init();
     console.log('✅ Banco de dados inicializado!');
