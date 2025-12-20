@@ -206,20 +206,10 @@ const migrations = [
         await run(`ALTER TABLE service_requests ADD COLUMN location TEXT`);
         console.log('✅ Coluna location adicionada em service_requests');
       } catch (e) {
-        const errorMsg = (e.message || '').toLowerCase();
-        if (!errorMsg.includes('duplicate column') && 
-            !errorMsg.includes('already exists') &&
-            !errorMsg.includes('column') ||
-            !errorMsg.includes('of relation') ||
-            !errorMsg.includes('already exists')) {
-          // Verificar se é erro de coluna já existente (PostgreSQL)
-          if (e.code === '42701' || (errorMsg.includes('column') && errorMsg.includes('already exists'))) {
-            console.log('ℹ️ Coluna location já existe, pulando...');
-          } else {
-            throw e;
-          }
-        } else {
+        if (isColumnExistsError(e)) {
           console.log('ℹ️ Coluna location já existe, pulando...');
+        } else {
+          throw e;
         }
       }
 
@@ -227,18 +217,10 @@ const migrations = [
         await run(`ALTER TABLE service_requests ADD COLUMN rejection_reason TEXT`);
         console.log('✅ Coluna rejection_reason adicionada em service_requests');
       } catch (e) {
-        const errorMsg = (e.message || '').toLowerCase();
-        if (!errorMsg.includes('duplicate column') && 
-            !errorMsg.includes('already exists') &&
-            !(errorMsg.includes('column') && errorMsg.includes('already exists'))) {
-          // Verificar se é erro de coluna já existente (PostgreSQL)
-          if (e.code === '42701' || (errorMsg.includes('column') && errorMsg.includes('already exists'))) {
-            console.log('ℹ️ Coluna rejection_reason já existe, pulando...');
-          } else {
-            throw e;
-          }
-        } else {
+        if (isColumnExistsError(e)) {
           console.log('ℹ️ Coluna rejection_reason já existe, pulando...');
+        } else {
+          throw e;
         }
       }
 
