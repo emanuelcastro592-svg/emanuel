@@ -94,9 +94,17 @@ const startServer = async () => {
     const possiblePaths = [
       path.join(__dirname, '../client/build'),
       path.join(__dirname, '../../client/build'),
+      path.join(__dirname, '../../../client/build'),
       path.join(process.cwd(), 'client/build'),
-      path.join(process.cwd(), 'client', 'build')
+      path.join(process.cwd(), 'client', 'build'),
+      path.join(process.cwd(), 'src', 'client', 'build'),
+      '/opt/render/project/src/client/build',
+      '/opt/render/project/src/client/build'
     ];
+    
+    console.log('🔍 Procurando build do React...');
+    console.log('📁 __dirname:', __dirname);
+    console.log('📁 process.cwd():', process.cwd());
     
     let buildPath = null;
     let indexPath = null;
@@ -104,6 +112,13 @@ const startServer = async () => {
     // Procurar o build em diferentes locais
     for (const possiblePath of possiblePaths) {
       const possibleIndexPath = path.join(possiblePath, 'index.html');
+      console.log('🔍 Testando:', possiblePath);
+      console.log('   Existe diretório?', fs.existsSync(possiblePath));
+      if (fs.existsSync(possiblePath)) {
+        console.log('   Conteúdo:', fs.readdirSync(possiblePath).join(', '));
+      }
+      console.log('   Existe index.html?', fs.existsSync(possibleIndexPath));
+      
       if (fs.existsSync(possiblePath) && fs.existsSync(possibleIndexPath)) {
         buildPath = possiblePath;
         indexPath = possibleIndexPath;
