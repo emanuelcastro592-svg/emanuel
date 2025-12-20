@@ -1,0 +1,99 @@
+═══════════════════════════════════════════════════════════
+  🔍 DIFERENÇA ENTRE LOCALHOST E SITE NA NUVEM
+═══════════════════════════════════════════════════════════
+
+VOCÊ ESTÁ CONFUSO SOBRE OS DOIS SITES? ENTENDA AQUI!
+
+═══════════════════════════════════════════════════════════
+SÃO DOIS SITES DIFERENTES:
+═══════════════════════════════════════════════════════════
+
+1️⃣ SITE NA NUVEM (Render):
+   https://personal-trainer-api-8z6c.onrender.com
+   
+   ✅ Funciona de qualquer lugar
+   ✅ Funciona no celular, tablet, PC
+   ✅ Funciona 24 horas por dia
+   ✅ Não precisa do seu PC ligado
+   ✅ É um site REAL na internet
+
+2️⃣ SITE LOCAL (no seu PC):
+   http://localhost:3000
+   
+   ✅ Só funciona no SEU PC
+   ✅ Só funciona quando você roda o site localmente
+   ✅ Precisa do seu PC ligado
+   ✅ Só você pode acessar
+   ✅ Não funciona no celular (a menos que configure)
+
+═══════════════════════════════════════════════════════════
+POR QUE SÃO DIFERENTES?
+═══════════════════════════════════════════════════════════
+
+🌐 SITE NA NUVEM:
+   - Está hospedado em servidores na internet
+   - Qualquer pessoa pode acessar
+   - Funciona sempre (24/7)
+   - É como um site "de verdade"
+
+💻 SITE LOCAL:
+   - Está rodando no SEU computador
+   - Só você pode acessar
+   - Precisa do seu PC ligado e o site rodando
+   - É só para desenvolvimento/teste
+
+═══════════════════════════════════════════════════════════
+QUAL VOCÊ DEVE USAR?
+═══════════════════════════════════════════════════════════
+
+🌐 USE O SITE NA NUVEM (RECOMENDADO):
+   https://personal-trainer-api-8z6c.onrender.com
+   
+   ✅ É o site "de verdade"
+   ✅ Funciona em todos os dispositivos
+   ✅ Funciona de qualquer lugar
+   ✅ Não precisa configurar nada
+
+💻 USE O SITE LOCAL (SÓ PARA TESTE):
+   http://localhost:3000
+   
+   ✅ Só use se quiser testar mudanças
+   ✅ Só funciona no seu PC
+   ✅ Precisa rodar o site localmente
+
+═══════════════════════════════════════════════════════════
+RESUMO:
+═══════════════════════════════════════════════════════════
+
+❌ O site na nuvem NÃO abre em localhost:3000
+   → São coisas diferentes!
+
+✅ O site na nuvem abre em:
+   https://personal-trainer-api-8z6c.onrender.com
+
+✅ O site local abre em:
+   http://localhost:3000
+   (Só quando você roda localmente)
+
+═══════════════════════════════════════════════════════════
+O QUE FAZER:
+═══════════════════════════════════════════════════════════
+
+1. Para usar o site normalmente:
+   → Acesse: https://personal-trainer-api-8z6c.onrender.com
+   → Funciona em qualquer dispositivo!
+
+2. Para testar localmente:
+   → Execute: RODAR-SITE-SIMPLES.bat
+   → Acesse: http://localhost:3000
+   → Só funciona no seu PC
+
+═══════════════════════════════════════════════════════════
+IMPORTANTE:
+═══════════════════════════════════════════════════════════
+
+O site na nuvem é o site "DE VERDADE" que você deve usar!
+
+O localhost é só para quando você quer testar algo no seu PC.
+
+═══════════════════════════════════════════════════════════

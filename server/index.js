@@ -102,10 +102,14 @@ const startServer = async () => {
     // Tentar múltiplos caminhos possíveis para o build
     const possibleBuildPaths = [
       path.join(process.cwd(), 'client', 'build'),
+      path.join(process.cwd(), 'build'),
       path.join(__dirname, '..', 'client', 'build'),
       path.join(__dirname, '..', '..', 'client', 'build'),
+      path.join(__dirname, '..', '..', '..', 'client', 'build'),
       '/opt/render/project/src/client/build',
-      path.join(process.cwd(), 'client', 'build')
+      '/opt/render/project/src/build',
+      path.resolve('./client/build'),
+      path.resolve('./build')
     ];
     
     console.log('🔍 Procurando build do React...');
