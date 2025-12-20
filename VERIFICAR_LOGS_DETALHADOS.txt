@@ -1,0 +1,77 @@
+═══════════════════════════════════════════════════════════
+  VERIFICAR LOGS DETALHADOS - PASSO A PASSO
+═══════════════════════════════════════════════════════════
+
+Adicionei logs MUITO mais detalhados para identificar
+exatamente onde está falhando!
+
+═══════════════════════════════════════════════════════════
+O QUE FOI ADICIONADO:
+═══════════════════════════════════════════════════════════
+
+✅ Teste de conexão explícito ANTES de criar tabelas
+✅ Logs mostrando variáveis de ambiente
+✅ Logs mostrando qual tipo de conexão está usando
+✅ Logs detalhados de erros com código e stack trace
+✅ Mensagens claras em cada etapa
+
+═══════════════════════════════════════════════════════════
+COMO VERIFICAR OS LOGS:
+═══════════════════════════════════════════════════════════
+
+1. No Render, vá em "Logs"
+
+2. Role para BAIXO até ver as mensagens mais recentes
+
+3. Procure por estas mensagens na ordem:
+
+   🚀 Iniciando aplicação...
+   📋 Variáveis de ambiente:
+      - NODE_ENV: ...
+      - PORT: ...
+      - DATABASE_URL: ✅ definido OU ❌ não definido
+      - JWT_SECRET: ✅ definido OU ❌ não definido
+
+   🔄 Testando conexão com banco de dados...
+   📝 Usando DATABASE_URL (Render/Cloud) OU Usando configuração local
+   
+   ✅ Conexão com banco de dados estabelecida!
+   ⏰ Hora do servidor: ...
+   
+   🔄 Criando tabelas...
+   ✅ Banco de dados PostgreSQL inicializado com sucesso!
+   
+   🔄 Executando migrações...
+   ✅ Migrações concluídas!
+   
+   ✅ Servidor rodando na porta 5000
+   🚀 Aplicação pronta para receber requisições!
+
+═══════════════════════════════════════════════════════════
+SE VER ERRO:
+═══════════════════════════════════════════════════════════
+
+Os logs agora vão mostrar EXATAMENTE onde está falhando:
+
+❌ Se DATABASE_URL não estiver definido:
+   → Vá em "Environment" no Render e adicione DATABASE_URL
+
+❌ Se conexão falhar:
+   → Vai mostrar o código do erro (ex: ECONNREFUSED, ETIMEDOUT)
+   → Vai mostrar detalhes completos do erro
+
+❌ Se criação de tabelas falhar:
+   → Vai mostrar qual tabela está dando problema
+   → Vai mostrar o erro SQL completo
+
+═══════════════════════════════════════════════════════════
+ME MOSTRE:
+═══════════════════════════════════════════════════════════
+
+1. Tire uma FOTO dos logs mais recentes
+   OU
+2. Copie e cole as últimas 50-100 linhas dos logs
+
+Assim vou identificar EXATAMENTE o problema!
+
+═══════════════════════════════════════════════════════════

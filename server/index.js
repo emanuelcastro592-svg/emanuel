@@ -80,24 +80,45 @@ const startServer = async () => {
     
     // Servir arquivos estáticos do React em produção
     if (process.env.NODE_ENV === 'production') {
+      const fs = require('fs');
       const buildPath = path.join(__dirname, '../client/build');
       const indexPath = path.join(buildPath, 'index.html');
       
+      console.log('🔍 Verificando build do frontend...');
+      console.log('📁 Caminho esperado:', buildPath);
+      console.log('📁 Caminho absoluto:', path.resolve(buildPath));
+      console.log('📁 Diretório atual:', __dirname);
+      
+      // Listar conteúdo do diretório client se existir
+      const clientDir = path.join(__dirname, '../client');
+      if (fs.existsSync(clientDir)) {
+        console.log('📂 Conteúdo de client/:', fs.readdirSync(clientDir).join(', '));
+      } else {
+        console.warn('⚠️ Diretório client/ não encontrado!');
+      }
+      
       // Verificar se o build existe
-      const fs = require('fs');
-      if (fs.existsSync(buildPath) && fs.existsSync(indexPath)) {
-        app.use(express.static(buildPath));
-        
-        // Todas as rotas que não são API, servir o React
-        app.get('*', (req, res) => {
-          if (!req.path.startsWith('/api')) {
-            res.sendFile(indexPath);
-          }
-        });
-        console.log('✅ Frontend React servido de:', buildPath);
+      if (fs.existsSync(buildPath)) {
+        console.log('✅ Diretório build encontrado!');
+        if (fs.existsSync(indexPath)) {
+          console.log('✅ index.html encontrado!');
+          app.use(express.static(buildPath));
+          
+          // Todas as rotas que não são API, servir o React
+          app.get('*', (req, res) => {
+            if (!req.path.startsWith('/api')) {
+              res.sendFile(indexPath);
+            }
+          });
+          console.log('✅ Frontend React servido de:', buildPath);
+        } else {
+          console.warn('⚠️ index.html não encontrado em:', indexPath);
+          console.warn('📂 Conteúdo de build/:', fs.existsSync(buildPath) ? fs.readdirSync(buildPath).join(', ') : 'diretório não existe');
+        }
       } else {
         console.warn('⚠️ Frontend build não encontrado em:', buildPath);
         console.warn('⚠️ Servindo apenas API. Frontend não disponível.');
+        console.warn('💡 Verifique se o buildCommand no render.yaml está executando corretamente.');
       }
     }
 
