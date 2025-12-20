@@ -246,18 +246,10 @@ const migrations = [
         await run(`ALTER TABLE service_requests ADD COLUMN updated_at DATETIME DEFAULT CURRENT_TIMESTAMP`);
         console.log('✅ Coluna updated_at adicionada em service_requests');
       } catch (e) {
-        const errorMsg = (e.message || '').toLowerCase();
-        if (!errorMsg.includes('duplicate column') && 
-            !errorMsg.includes('already exists') &&
-            !(errorMsg.includes('column') && errorMsg.includes('already exists'))) {
-          // Verificar se é erro de coluna já existente (PostgreSQL)
-          if (e.code === '42701' || (errorMsg.includes('column') && errorMsg.includes('already exists'))) {
-            console.log('ℹ️ Coluna updated_at já existe, pulando...');
-          } else {
-            throw e;
-          }
-        } else {
+        if (isColumnExistsError(e)) {
           console.log('ℹ️ Coluna updated_at já existe, pulando...');
+        } else {
+          throw e;
         }
       }
     }
