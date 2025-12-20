@@ -90,44 +90,55 @@ const startServer = async () => {
     // Servir arquivos estáticos do React em produção
     const fs = require('fs');
     
-    // Tentar múltiplos caminhos possíveis
-    const possiblePaths = [
-      path.join(__dirname, '../client/build'),
-      path.join(__dirname, '../../client/build'),
-      path.join(__dirname, '../../../client/build'),
-      path.join(process.cwd(), 'client/build'),
-      path.join(process.cwd(), 'client', 'build'),
-      path.join(process.cwd(), 'src', 'client', 'build'),
-      '/opt/render/project/src/client/build',
-      '/opt/render/project/src/client/build'
-    ];
+    // Caminho do build - Render usa /opt/render/project/src como raiz
+    const basePath = process.cwd();
+    const buildPath = path.join(basePath, 'client', 'build');
+    const indexPath = path.join(buildPath, 'index.html');
     
     console.log('🔍 Procurando build do React...');
+    console.log('📁 Base path:', basePath);
+    console.log('📁 Build path:', buildPath);
+    console.log('📁 Index path:', indexPath);
     console.log('📁 __dirname:', __dirname);
-    console.log('📁 process.cwd():', process.cwd());
     
-    let buildPath = null;
-    let indexPath = null;
+    // Listar diretório raiz para debug
+    try {
+      const rootFiles = fs.readdirSync(basePath);
+      console.log('📂 Arquivos na raiz:', rootFiles.join(', '));
+    } catch (e) {
+      console.warn('⚠️ Não foi possível listar raiz:', e.message);
+    }
     
-    // Procurar o build em diferentes locais
-    for (const possiblePath of possiblePaths) {
-      const possibleIndexPath = path.join(possiblePath, 'index.html');
-      console.log('🔍 Testando:', possiblePath);
-      console.log('   Existe diretório?', fs.existsSync(possiblePath));
-      if (fs.existsSync(possiblePath)) {
-        console.log('   Conteúdo:', fs.readdirSync(possiblePath).join(', '));
+    // Listar diretório client se existir
+    const clientPath = path.join(basePath, 'client');
+    if (fs.existsSync(clientPath)) {
+      try {
+        const clientFiles = fs.readdirSync(clientPath);
+        console.log('📂 Arquivos em client/:', clientFiles.join(', '));
+      } catch (e) {
+        console.warn('⚠️ Não foi possível listar client/:', e.message);
       }
-      console.log('   Existe index.html?', fs.existsSync(possibleIndexPath));
-      
-      if (fs.existsSync(possiblePath) && fs.existsSync(possibleIndexPath)) {
-        buildPath = possiblePath;
-        indexPath = possibleIndexPath;
-        console.log('✅ Frontend build encontrado em:', buildPath);
-        break;
+    } else {
+      console.warn('⚠️ Diretório client/ não encontrado em:', clientPath);
+    }
+    
+    // Verificar se build existe
+    const buildExists = fs.existsSync(buildPath);
+    const indexExists = fs.existsSync(indexPath);
+    
+    console.log('📁 Build existe?', buildExists);
+    console.log('📁 Index existe?', indexExists);
+    
+    if (buildExists && indexExists) {
+      try {
+        const buildFiles = fs.readdirSync(buildPath);
+        console.log('📂 Arquivos em build/:', buildFiles.join(', '));
+      } catch (e) {
+        console.warn('⚠️ Não foi possível listar build/:', e.message);
       }
     }
     
-    if (buildPath && indexPath) {
+    if (buildExists && indexExists) {
       console.log('📁 Servindo de:', buildPath);
       
       // Servir arquivos estáticos do React
@@ -154,10 +165,10 @@ const startServer = async () => {
       
       console.log('✅ Frontend React configurado e servindo!');
     } else {
-      console.warn('⚠️ Frontend build não encontrado em nenhum dos caminhos:');
-      possiblePaths.forEach(p => console.warn('   -', p));
-      console.warn('📁 Diretório atual:', __dirname);
-      console.warn('📁 Process CWD:', process.cwd());
+      console.warn('⚠️ Frontend build não encontrado!');
+      console.warn('📁 Caminho testado:', buildPath);
+      console.warn('📁 Base path:', basePath);
+      console.warn('📁 __dirname:', __dirname);
       
       // Criar uma página HTML simples como fallback
       const fallbackHTML = `
