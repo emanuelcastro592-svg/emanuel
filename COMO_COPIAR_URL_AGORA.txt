@@ -82,3 +82,4 @@ postgresql://fitbooking_user:senha123@dpg-abc123.oregon-postgres.render.com:5432
 Se começar com "postgresql://", está correto! ✅
 
 ═══════════════════════════════════════════════════════════
+

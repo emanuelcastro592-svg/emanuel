@@ -77,3 +77,4 @@ PARA USAR NA NUVEM:
    1. Acesse: https://personal-trainer-api-8z6c.onrender.com
 
 ═══════════════════════════════════════════════════════════
+

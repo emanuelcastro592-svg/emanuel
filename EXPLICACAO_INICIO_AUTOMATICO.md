@@ -159,3 +159,4 @@ Isso remove a configuração de início automático.
 **Resultado:** O site inicia automaticamente toda vez que você liga o computador! 🎉
 
 
+

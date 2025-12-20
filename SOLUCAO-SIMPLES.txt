@@ -1,0 +1,67 @@
+═══════════════════════════════════════════════════════════
+  ⚡ SOLUÇÃO SIMPLES - RODAR SITE SEM JANELAS
+═══════════════════════════════════════════════════════════
+
+SE OS OUTROS SCRIPTS NÃO FUNCIONARAM, USE ESTE!
+
+═══════════════════════════════════════════════════════════
+COMO USAR:
+═══════════════════════════════════════════════════════════
+
+1. Vá na pasta:
+   C:\Users\User\Downloads\NEW APP
+
+2. Execute (clique 2x):
+   RODAR-SITE-SIMPLES.bat
+
+3. Aguarde 20-30 segundos
+
+4. Abra o navegador e acesse:
+   http://localhost:3000
+
+✅ O site vai rodar SEM mostrar janelas!
+
+✅ Vai continuar rodando mesmo fechando tudo!
+
+═══════════════════════════════════════════════════════════
+COMO VERIFICAR SE ESTÁ RODANDO:
+═══════════════════════════════════════════════════════════
+
+1. Execute (clique 2x):
+   VERIFICAR-SITE.bat
+
+2. Ou simplesmente abra o navegador e acesse:
+   http://localhost:3000
+
+═══════════════════════════════════════════════════════════
+COMO PARAR O SITE:
+═══════════════════════════════════════════════════════════
+
+1. Execute (clique 2x):
+   PARAR-SITE-SIMPLES.bat
+
+═══════════════════════════════════════════════════════════
+ARQUIVOS CRIADOS:
+═══════════════════════════════════════════════════════════
+
+✅ RODAR-SITE-SIMPLES.bat
+   → Roda o site sem janelas (método simples)
+
+✅ PARAR-SITE-SIMPLES.bat
+   → Para o site completamente
+
+✅ VERIFICAR-SITE.bat
+   → Verifica se o site está rodando
+
+═══════════════════════════════════════════════════════════
+SE AINDA NÃO FUNCIONAR:
+═══════════════════════════════════════════════════════════
+
+Me diga qual erro apareceu quando você executou o script!
+
+Ou me envie uma foto da tela com o erro.
+
+Vou resolver para você!
+
+═══════════════════════════════════════════════════════════
+

@@ -65,3 +65,4 @@ echo.
 echo Para parar, feche as duas janelas do terminal.
 echo.
 pause
+

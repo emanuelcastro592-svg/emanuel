@@ -101,3 +101,4 @@ Posso criar:
 
 **Quer que eu prepare tudo para deploy em Vercel + Render?** 🚀
 
+

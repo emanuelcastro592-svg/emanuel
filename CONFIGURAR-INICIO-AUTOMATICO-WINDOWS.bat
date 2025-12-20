@@ -14,3 +14,4 @@ powershell -ExecutionPolicy Bypass -File "%~dp0configurar-inicio-automatico-wind
 pause
 
 
+

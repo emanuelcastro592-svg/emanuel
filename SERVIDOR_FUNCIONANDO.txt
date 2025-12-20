@@ -76,3 +76,4 @@ RESUMO:
 ⚠️ Frontend precisa ser corrigido (mas não é crítico)
 
 ═══════════════════════════════════════════════════════════
+

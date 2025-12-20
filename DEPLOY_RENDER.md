@@ -59,3 +59,4 @@ O serviço grátis do Render "dorme" após 15 minutos sem uso.
 
 Para evitar isso, use Railway ou pague o plano do Render.
 
+

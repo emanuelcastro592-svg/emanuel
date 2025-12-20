@@ -21,3 +21,4 @@ Write-Host "Ou feche a janela do PowerShell que foi aberta." -ForegroundColor Cy
 
 
 
+

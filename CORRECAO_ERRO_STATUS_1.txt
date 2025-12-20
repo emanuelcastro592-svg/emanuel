@@ -74,3 +74,4 @@ Me mostre os logs completos do deploy mais recente.
 Agora os logs vão mostrar EXATAMENTE onde está falhando!
 
 ═══════════════════════════════════════════════════════════
+

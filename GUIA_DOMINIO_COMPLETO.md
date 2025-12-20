@@ -210,3 +210,4 @@ pm2 startup  # Configurar início automático
 
 Com essas informações, posso ajudar com a configuração específica! 🚀
 
+

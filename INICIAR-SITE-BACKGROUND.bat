@@ -75,3 +75,4 @@ echo Para ver os logs:
 echo   VER-LOGS.bat
 echo.
 pause
+

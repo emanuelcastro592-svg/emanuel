@@ -56,3 +56,4 @@ echo Veja o guia completo em: GUIA_DOMINIO_COMPLETO.md
 echo.
 pause
 
+

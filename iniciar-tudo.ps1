@@ -30,3 +30,4 @@ Write-Host "Ou feche as janelas do PowerShell que foram abertas." -ForegroundCol
 
 
 
+

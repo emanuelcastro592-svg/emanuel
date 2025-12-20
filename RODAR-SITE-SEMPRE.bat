@@ -139,3 +139,4 @@ echo.
 echo Para parar, execute: PARAR-SITE.bat
 echo.
 pause
+

@@ -1,0 +1,72 @@
+═══════════════════════════════════════════════════════════
+  ✅ SITE INICIANDO - O QUE FAZER AGORA
+═══════════════════════════════════════════════════════════
+
+AS JANELAS ABRIRAM! Agora siga estes passos:
+
+═══════════════════════════════════════════════════════════
+PASSO 1 - AGUARDAR (IMPORTANTE!)
+═══════════════════════════════════════════════════════════
+
+Aguarde 15-30 segundos para o site iniciar completamente.
+
+Você vai ver nas janelas do terminal:
+   ✅ Backend: "Servidor rodando na porta 5000"
+   ✅ Frontend: "Compiled successfully!"
+
+═══════════════════════════════════════════════════════════
+PASSO 2 - VERIFICAR AS JANELAS
+═══════════════════════════════════════════════════════════
+
+Olhe as 2 janelas do terminal que abriram:
+
+JANELA 1 (Backend):
+   → Deve mostrar: "Servidor rodando na porta 5000"
+   → Se aparecer algum ERRO, me avise!
+
+JANELA 2 (Frontend):
+   → Deve mostrar: "Compiled successfully!"
+   → Pode demorar um pouco mais (30-60 segundos)
+
+═══════════════════════════════════════════════════════════
+PASSO 3 - ACESSAR O SITE
+═══════════════════════════════════════════════════════════
+
+Depois de aguardar, abra o navegador e acesse:
+
+   http://localhost:3000
+
+O site deve abrir normalmente!
+
+═══════════════════════════════════════════════════════════
+IMPORTANTE - NÃO FECHE AS JANELAS!
+═══════════════════════════════════════════════════════════
+
+⚠️ NÃO FECHE as janelas do terminal!
+
+Se fechar, o site para de funcionar.
+
+Deixe as janelas abertas enquanto usar o site.
+
+═══════════════════════════════════════════════════════════
+SE DER ERRO:
+═══════════════════════════════════════════════════════════
+
+Se aparecer algum erro nas janelas:
+
+1. Copie a mensagem de erro
+2. Me envie a mensagem
+3. Vou resolver para você!
+
+═══════════════════════════════════════════════════════════
+SE FUNCIONAR:
+═══════════════════════════════════════════════════════════
+
+✅ O site vai abrir em: http://localhost:3000
+
+✅ Você pode usar normalmente!
+
+✅ Só não feche as janelas do terminal!
+
+═══════════════════════════════════════════════════════════
+

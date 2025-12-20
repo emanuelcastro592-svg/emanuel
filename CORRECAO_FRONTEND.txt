@@ -76,3 +76,4 @@ Me mostre os logs do deploy mais recente.
 Vou verificar se o build está sendo criado corretamente.
 
 ═══════════════════════════════════════════════════════════
+

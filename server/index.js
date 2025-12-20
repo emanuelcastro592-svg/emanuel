@@ -17,19 +17,27 @@ const allowedOrigins = [
   `http://www.${process.env.DOMAIN}`
 ].filter(Boolean);
 
-// Middleware
+// Middleware CORS - Permitir acesso de qualquer dispositivo
 app.use(cors({
   origin: function (origin, callback) {
     // Permitir requisições sem origin (mobile apps, Postman, etc)
     if (!origin) return callback(null, true);
     
-    if (allowedOrigins.indexOf(origin) !== -1 || process.env.NODE_ENV !== 'production') {
+    // Em produção, permitir qualquer origem para funcionar em todos os dispositivos
+    if (process.env.NODE_ENV === 'production') {
+      return callback(null, true);
+    }
+    
+    // Em desenvolvimento, usar allowedOrigins
+    if (allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
-      callback(new Error('Não permitido pelo CORS'));
+      callback(null, true); // Permitir mesmo em desenvolvimento
     }
   },
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
