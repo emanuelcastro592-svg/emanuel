@@ -2,7 +2,7 @@ services:
   - type: web
     name: personal-trainer-api
     env: node
-    buildCommand: npm install && cd client && npm install && CI=false GENERATE_SOURCEMAP=false npm run build && cd .. && ls -la client/build && echo "Build completed successfully"
+    buildCommand: npm install && cd client && npm install && CI=false GENERATE_SOURCEMAP=false npm run build && cd .. && echo "=== BUILD FILES ===" && ls -la client/build 2>&1 && echo "=== BUILD COMPLETED ===" && pwd && echo "=== CURRENT DIR ===" && find . -name "index.html" -type f 2>/dev/null | head -5 || echo "No index.html found"
     startCommand: node server/index.js
     envVars:
       - key: NODE_ENV
