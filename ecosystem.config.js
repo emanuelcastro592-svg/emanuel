@@ -12,7 +12,7 @@ module.exports = {
       watch: false,
       max_memory_restart: '1G',
       env: {
-        NODE_ENV: 'production',
+        NODE_ENV: 'development',
         PORT: 5000
       },
       error_file: './logs/servidor-error.log',
@@ -32,9 +32,10 @@ module.exports = {
       watch: false,
       max_memory_restart: '1G',
       env: {
-        NODE_ENV: 'production',
+        NODE_ENV: 'development',
         PORT: 3000,
-        BROWSER: 'none'
+        BROWSER: 'none',
+        REACT_APP_API_URL: 'http://localhost:5000/api'
       },
       error_file: '../logs/cliente-error.log',
       out_file: '../logs/cliente-out.log',
