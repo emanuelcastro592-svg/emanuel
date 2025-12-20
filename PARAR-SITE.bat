@@ -1,29 +1,28 @@
 @echo off
 echo ========================================
-echo   Parando Servidor e Cliente
+echo   PARAR SITE
 echo ========================================
 echo.
 
-REM Parar processos na porta 5000 (servidor)
-echo Parando servidor (porta 5000)...
+REM Parar processos Node.js na porta 5000 (backend)
+echo Parando servidor backend (porta 5000)...
 for /f "tokens=5" %%a in ('netstat -aon ^| findstr :5000 ^| findstr LISTENING') do (
-    echo Encerrando processo PID: %%a
     taskkill /F /PID %%a >nul 2>&1
 )
 
-REM Parar processos na porta 3000 (cliente)
-echo Parando cliente (porta 3000)...
+REM Parar processos Node.js na porta 3000 (frontend)
+echo Parando frontend React (porta 3000)...
 for /f "tokens=5" %%a in ('netstat -aon ^| findstr :3000 ^| findstr LISTENING') do (
-    echo Encerrando processo PID: %%a
     taskkill /F /PID %%a >nul 2>&1
 )
+
+REM Parar todos os processos node.exe relacionados ao projeto
+echo Parando processos Node.js do projeto...
+taskkill /F /IM node.exe /FI "WINDOWTITLE eq *NEW APP*" >nul 2>&1
 
 echo.
 echo ========================================
-echo   Processos parados!
+echo   SITE PARADO!
 echo ========================================
 echo.
 pause
-
-
-

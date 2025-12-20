@@ -1,0 +1,69 @@
+═══════════════════════════════════════════════════════════
+  🚀 COMO RODAR O SITE LOCALMENTE
+═══════════════════════════════════════════════════════════
+
+PARA RODAR O SITE EM http://localhost:3000
+SEM PRECISAR DO CURSOR ABERTO:
+
+═══════════════════════════════════════════════════════════
+OPÇÃO 1 - SCRIPT AUTOMÁTICO (RECOMENDADO):
+═══════════════════════════════════════════════════════════
+
+1. Execute o arquivo:
+   INICIAR-SITE-BACKGROUND.bat
+
+2. O site vai iniciar em background!
+
+3. Acesse: http://localhost:3000
+
+4. Para parar, execute:
+   PARAR-SITE.bat
+
+═══════════════════════════════════════════════════════════
+OPÇÃO 2 - MANUAL:
+═══════════════════════════════════════════════════════════
+
+1. Abra 2 terminais (CMD ou PowerShell)
+
+TERMINAL 1 - Backend:
+   cd "c:\Users\User\Downloads\NEW APP"
+   node server/index.js
+
+TERMINAL 2 - Frontend:
+   cd "c:\Users\User\Downloads\NEW APP\client"
+   npm start
+
+2. Acesse: http://localhost:3000
+
+═══════════════════════════════════════════════════════════
+COMANDOS ÚTEIS:
+═══════════════════════════════════════════════════════════
+
+✅ INICIAR-SITE-BACKGROUND.bat
+   → Inicia o site em background
+
+🛑 PARAR-SITE.bat
+   → Para o site
+
+📋 VER-LOGS.bat
+   → Ver logs do backend e frontend
+
+═══════════════════════════════════════════════════════════
+O QUE ACONTECE:
+═══════════════════════════════════════════════════════════
+
+✅ Backend inicia na porta 5000
+✅ Frontend inicia na porta 3000
+✅ Site fica disponível em http://localhost:3000
+✅ Funciona mesmo com Cursor fechado!
+
+═══════════════════════════════════════════════════════════
+NOTA:
+═══════════════════════════════════════════════════════════
+
+O site vai continuar rodando até você:
+- Executar PARAR-SITE.bat
+- Reiniciar o computador
+- Fechar as janelas do terminal
+
+═══════════════════════════════════════════════════════════
