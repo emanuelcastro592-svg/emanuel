@@ -1,7 +1,24 @@
 import axios from 'axios';
 import { getAuthToken } from './auth';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+// Detectar automaticamente a URL da API baseado no ambiente
+const getApiUrl = () => {
+  // Se REACT_APP_API_URL estiver definido, usar ele
+  if (process.env.REACT_APP_API_URL) {
+    return process.env.REACT_APP_API_URL;
+  }
+  
+  // Se estiver em produção e não tiver variável, usar a URL atual
+  if (process.env.NODE_ENV === 'production') {
+    // Em produção, usar a mesma origem (mesmo domínio)
+    return '/api';
+  }
+  
+  // Em desenvolvimento, usar localhost
+  return 'http://localhost:5000/api';
+};
+
+const API_URL = getApiUrl();
 
 const api = axios.create({
   baseURL: API_URL,

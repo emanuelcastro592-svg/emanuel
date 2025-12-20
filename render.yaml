@@ -11,6 +11,8 @@ services:
         value: 5000
       - key: JWT_SECRET
         generateValue: true
+      - key: REACT_APP_API_URL
+        value: https://personal-trainer-api-8z6c.onrender.com/api
       - key: DOMAIN
         sync: false
       - key: CLIENT_URL
