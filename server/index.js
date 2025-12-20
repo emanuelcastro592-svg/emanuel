@@ -119,7 +119,30 @@ const startServer = async () => {
         console.warn('⚠️ Frontend build não encontrado em:', buildPath);
         console.warn('⚠️ Servindo apenas API. Frontend não disponível.');
         console.warn('💡 Verifique se o buildCommand no render.yaml está executando corretamente.');
+        
+        // Rota de fallback para a raiz
+        app.get('/', (req, res) => {
+          res.json({
+            message: 'API está funcionando!',
+            status: 'online',
+            frontend: 'Frontend não disponível. Verifique os logs do build.',
+            api: {
+              test: '/api/test',
+              auth: '/api/auth',
+              trainers: '/api/trainers'
+            }
+          });
+        });
       }
+    } else {
+      // Em desenvolvimento, também adicionar rota de fallback
+      app.get('/', (req, res) => {
+        res.json({
+          message: 'API está funcionando!',
+          status: 'online',
+          environment: 'development'
+        });
+      });
     }
 
     // Rota de teste
