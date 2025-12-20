@@ -45,7 +45,16 @@ const ratingsRoutes = require('./routes/ratings');
 const notificationsRoutes = require('./routes/notifications');
 const usersRoutes = require('./routes/users');
 
-// Rotas
+// Rota de teste (antes das outras rotas)
+app.get('/api/test', (req, res) => {
+  res.json({ 
+    message: 'API funcionando!',
+    domain: process.env.DOMAIN || 'localhost',
+    environment: process.env.NODE_ENV || 'development'
+  });
+});
+
+// Rotas da API
 app.use('/api/auth', authRoutes);
 app.use('/api/trainers', trainerRoutes);
 app.use('/api/services', serviceRoutes);
@@ -80,12 +89,30 @@ const startServer = async () => {
     
     // Servir arquivos estáticos do React em produção
     const fs = require('fs');
-    const buildPath = path.join(__dirname, '../client/build');
-    const indexPath = path.join(buildPath, 'index.html');
     
-    // Verificar se o build existe
-    if (fs.existsSync(buildPath) && fs.existsSync(indexPath)) {
-      console.log('✅ Frontend build encontrado!');
+    // Tentar múltiplos caminhos possíveis
+    const possiblePaths = [
+      path.join(__dirname, '../client/build'),
+      path.join(__dirname, '../../client/build'),
+      path.join(process.cwd(), 'client/build'),
+      path.join(process.cwd(), 'client', 'build')
+    ];
+    
+    let buildPath = null;
+    let indexPath = null;
+    
+    // Procurar o build em diferentes locais
+    for (const possiblePath of possiblePaths) {
+      const possibleIndexPath = path.join(possiblePath, 'index.html');
+      if (fs.existsSync(possiblePath) && fs.existsSync(possibleIndexPath)) {
+        buildPath = possiblePath;
+        indexPath = possibleIndexPath;
+        console.log('✅ Frontend build encontrado em:', buildPath);
+        break;
+      }
+    }
+    
+    if (buildPath && indexPath) {
       console.log('📁 Servindo de:', buildPath);
       
       // Servir arquivos estáticos do React
@@ -99,14 +126,15 @@ const startServer = async () => {
         if (req.path.startsWith('/api')) {
           return next();
         }
-        res.sendFile(indexPath);
+        res.sendFile(path.resolve(indexPath));
       });
       
       console.log('✅ Frontend React configurado e servindo!');
     } else {
-      console.warn('⚠️ Frontend build não encontrado.');
-      console.warn('📁 Caminho esperado:', buildPath);
-      console.warn('📁 Caminho absoluto:', path.resolve(buildPath));
+      console.warn('⚠️ Frontend build não encontrado em nenhum dos caminhos:');
+      possiblePaths.forEach(p => console.warn('   -', p));
+      console.warn('📁 Diretório atual:', __dirname);
+      console.warn('📁 Process CWD:', process.cwd());
       
       // Criar uma página HTML simples como fallback
       const fallbackHTML = `
@@ -185,14 +213,6 @@ const startServer = async () => {
       console.warn('⚠️ Servindo página de fallback na raiz.');
     }
 
-    // Rota de teste
-    app.get('/api/test', (req, res) => {
-      res.json({ 
-        message: 'API funcionando!',
-        domain: process.env.DOMAIN || 'localhost',
-        environment: process.env.NODE_ENV || 'development'
-      });
-    });
 
     // Iniciar servidor apenas após tudo estar pronto
     app.listen(PORT, '0.0.0.0', () => {
