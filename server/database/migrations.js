@@ -12,9 +12,10 @@ const migrations = [
         await run(`ALTER TABLE users ADD COLUMN avatar TEXT`);
         console.log('✅ Coluna avatar adicionada');
       } catch (e) {
-        if (!e.message.includes('duplicate column')) {
+        if (!e.message.includes('duplicate column') && !e.message.includes('already exists')) {
           throw e;
         }
+        console.log('ℹ️ Coluna avatar já existe, pulando...');
       }
 
       try {
@@ -97,9 +98,10 @@ const migrations = [
         await run(`ALTER TABLE services ADD COLUMN category TEXT`);
         console.log('✅ Coluna category adicionada em services');
       } catch (e) {
-        if (!e.message.includes('duplicate column')) {
+        if (!e.message.includes('duplicate column') && !e.message.includes('already exists')) {
           throw e;
         }
+        console.log('ℹ️ Coluna category já existe, pulando...');
       }
 
       try {
@@ -128,9 +130,10 @@ const migrations = [
         await run(`ALTER TABLE appointments ADD COLUMN location TEXT`);
         console.log('✅ Coluna location adicionada em appointments');
       } catch (e) {
-        if (!e.message.includes('duplicate column')) {
+        if (!e.message.includes('duplicate column') && !e.message.includes('already exists')) {
           throw e;
         }
+        console.log('ℹ️ Coluna location já existe, pulando...');
       }
 
       try {
@@ -159,9 +162,10 @@ const migrations = [
         await run(`ALTER TABLE service_requests ADD COLUMN location TEXT`);
         console.log('✅ Coluna location adicionada em service_requests');
       } catch (e) {
-        if (!e.message.includes('duplicate column')) {
+        if (!e.message.includes('duplicate column') && !e.message.includes('already exists')) {
           throw e;
         }
+        console.log('ℹ️ Coluna location já existe, pulando...');
       }
 
       try {
@@ -199,6 +203,7 @@ const runMigrations = async () => {
 };
 
 module.exports = { runMigrations };
+
 
 
 

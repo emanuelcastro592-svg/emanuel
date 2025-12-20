@@ -2,7 +2,7 @@ services:
   - type: web
     name: personal-trainer-api
     env: node
-    buildCommand: npm install && cd client && npm install && cd ..
+    buildCommand: npm install && cd client && npm install && npm run build && cd ..
     startCommand: node server/index.js
     envVars:
       - key: NODE_ENV
@@ -27,3 +27,4 @@ databases:
     plan: free
     databaseName: fitbooking
     user: fitbooking_user
+
