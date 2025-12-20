@@ -170,8 +170,9 @@ const migrations = [
         console.log('✅ Coluna location adicionada em appointments');
       } catch (e) {
         if (isColumnExistsError(e)) {
-          console.log('ℹ️ Coluna location já existe, pulando...');
+          console.log('ℹ️ Coluna location já existe em appointments, pulando...');
         } else {
+          console.error('❌ Erro ao adicionar location em appointments:', e.message);
           throw e;
         }
       }
@@ -181,19 +182,21 @@ const migrations = [
         console.log('✅ Coluna cancellation_reason adicionada em appointments');
       } catch (e) {
         if (isColumnExistsError(e)) {
-          console.log('ℹ️ Coluna cancellation_reason já existe, pulando...');
+          console.log('ℹ️ Coluna cancellation_reason já existe em appointments, pulando...');
         } else {
+          console.error('❌ Erro ao adicionar cancellation_reason em appointments:', e.message);
           throw e;
         }
       }
 
       try {
-        await run(`ALTER TABLE appointments ADD COLUMN updated_at DATETIME DEFAULT CURRENT_TIMESTAMP`);
+        await run(`ALTER TABLE appointments ADD COLUMN updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP`);
         console.log('✅ Coluna updated_at adicionada em appointments');
       } catch (e) {
         if (isColumnExistsError(e)) {
-          console.log('ℹ️ Coluna updated_at já existe, pulando...');
+          console.log('ℹ️ Coluna updated_at já existe em appointments, pulando...');
         } else {
+          console.error('❌ Erro ao adicionar updated_at em appointments:', e.message);
           throw e;
         }
       }
@@ -207,8 +210,9 @@ const migrations = [
         console.log('✅ Coluna location adicionada em service_requests');
       } catch (e) {
         if (isColumnExistsError(e)) {
-          console.log('ℹ️ Coluna location já existe, pulando...');
+          console.log('ℹ️ Coluna location já existe em service_requests, pulando...');
         } else {
+          console.error('❌ Erro ao adicionar location em service_requests:', e.message);
           throw e;
         }
       }
@@ -218,19 +222,21 @@ const migrations = [
         console.log('✅ Coluna rejection_reason adicionada em service_requests');
       } catch (e) {
         if (isColumnExistsError(e)) {
-          console.log('ℹ️ Coluna rejection_reason já existe, pulando...');
+          console.log('ℹ️ Coluna rejection_reason já existe em service_requests, pulando...');
         } else {
+          console.error('❌ Erro ao adicionar rejection_reason em service_requests:', e.message);
           throw e;
         }
       }
 
       try {
-        await run(`ALTER TABLE service_requests ADD COLUMN updated_at DATETIME DEFAULT CURRENT_TIMESTAMP`);
+        await run(`ALTER TABLE service_requests ADD COLUMN updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP`);
         console.log('✅ Coluna updated_at adicionada em service_requests');
       } catch (e) {
         if (isColumnExistsError(e)) {
-          console.log('ℹ️ Coluna updated_at já existe, pulando...');
+          console.log('ℹ️ Coluna updated_at já existe em service_requests, pulando...');
         } else {
+          console.error('❌ Erro ao adicionar updated_at em service_requests:', e.message);
           throw e;
         }
       }

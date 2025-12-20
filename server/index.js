@@ -100,16 +100,16 @@ const startServer = async () => {
     const fs = require('fs');
     
     // Tentar múltiplos caminhos possíveis para o build
+    // No Render, o diretório de trabalho é /opt/render/project/src
     const possibleBuildPaths = [
-      path.join(process.cwd(), 'client', 'build'),
-      path.join(process.cwd(), 'build'),
-      path.join(__dirname, '..', 'client', 'build'),
-      path.join(__dirname, '..', '..', 'client', 'build'),
-      path.join(__dirname, '..', '..', '..', 'client', 'build'),
-      '/opt/render/project/src/client/build',
-      '/opt/render/project/src/build',
-      path.resolve('./client/build'),
-      path.resolve('./build')
+      path.join(process.cwd(), 'client', 'build'),  // Caminho mais comum
+      path.join(process.cwd(), 'build'),            // Build na raiz
+      path.join(__dirname, '..', 'client', 'build'), // Relativo ao server/
+      path.join(__dirname, '..', '..', 'client', 'build'), // Relativo ao server/
+      '/opt/render/project/src/client/build',       // Render padrão
+      '/opt/render/project/src/build',              // Build na raiz no Render
+      path.resolve(process.cwd(), 'client', 'build'), // Absoluto
+      path.resolve(process.cwd(), 'build')          // Absoluto na raiz
     ];
     
     console.log('🔍 Procurando build do React...');
