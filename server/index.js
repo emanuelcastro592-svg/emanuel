@@ -143,12 +143,13 @@ const startServer = async () => {
         if (req.path.startsWith('/api')) {
           return next();
         }
-        // Ignorar arquivos estáticos (já servidos pelo express.static)
-        if (req.path.includes('.')) {
-          return next();
-        }
         // Servir index.html para todas as outras rotas (SPA routing)
-        res.sendFile(path.resolve(indexPath));
+        res.sendFile(path.resolve(indexPath), (err) => {
+          if (err) {
+            console.error('Erro ao servir index.html:', err);
+            next(err);
+          }
+        });
       });
       
       console.log('✅ Frontend React configurado e servindo!');
