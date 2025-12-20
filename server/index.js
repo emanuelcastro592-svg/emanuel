@@ -136,11 +136,18 @@ const startServer = async () => {
         etag: false
       }));
       
+      // IMPORTANTE: Esta rota catch-all deve ser a ÚLTIMA
       // Todas as rotas que não são API, servir o React
       app.get('*', (req, res, next) => {
+        // Ignorar requisições de API
         if (req.path.startsWith('/api')) {
           return next();
         }
+        // Ignorar arquivos estáticos (já servidos pelo express.static)
+        if (req.path.includes('.')) {
+          return next();
+        }
+        // Servir index.html para todas as outras rotas (SPA routing)
         res.sendFile(path.resolve(indexPath));
       });
       
