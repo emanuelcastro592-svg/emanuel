@@ -1,0 +1,84 @@
+═══════════════════════════════════════════════════════════
+  COMO COPIAR A URL AGORA - PASSO A PASSO
+═══════════════════════════════════════════════════════════
+
+Eu não tenho acesso à sua conta, mas vou te guiar!
+
+═══════════════════════════════════════════════════════════
+PASSO 1 - FECHAR O POP-UP:
+═══════════════════════════════════════════════════════════
+
+1. Feche o pop-up "Outbound" que está aberto
+   (clique no X ou clique fora dele)
+
+═══════════════════════════════════════════════════════════
+PASSO 2 - CLICAR EM "CONNECT":
+═══════════════════════════════════════════════════════════
+
+1. Olhe no CANTO SUPERIOR DIREITO da página
+
+2. Você vai ver dois botões:
+   - "Connect" (com seta para cima) ← CLIQUE AQUI!
+   - "Manual Deploy"
+
+3. CLIQUE no botão "Connect"
+
+4. Vai abrir um MENU DROP-DOWN
+
+═══════════════════════════════════════════════════════════
+PASSO 3 - ESCOLHER "INTERNAL DATABASE URL":
+═══════════════════════════════════════════════════════════
+
+1. No menu que abriu, procure por:
+   - "Internal Database URL" ← CLIQUE AQUI!
+   - "External Database URL"
+   - "Outbound" (não é esse!)
+
+2. CLIQUE em "Internal Database URL"
+
+3. Vai mostrar a URL completa!
+
+═══════════════════════════════════════════════════════════
+PASSO 4 - COPIAR A URL:
+═══════════════════════════════════════════════════════════
+
+1. A URL vai aparecer em um campo de texto
+
+2. A URL deve começar com: postgresql://
+
+3. CLIQUE no campo para selecionar toda a URL
+
+4. Pressione CTRL+C para copiar
+
+5. PRONTO! A URL está copiada!
+
+═══════════════════════════════════════════════════════════
+PASSO 5 - ADICIONAR NO SERVIÇO WEB:
+═══════════════════════════════════════════════════════════
+
+1. Volte para o serviço "personal-trainer-api"
+
+2. Vá em "Environment" (menu lateral)
+
+3. Clique em "Edit" (botão preto)
+
+4. Clique em "Add Environment Variable" ou "+"
+
+5. Preencha:
+   - Key: DATABASE_URL
+   - Value: Cole a URL (CTRL+V)
+
+6. Clique em "Save"
+
+7. Faça o deploy!
+
+═══════════════════════════════════════════════════════════
+EXEMPLO DE URL CORRETA:
+═══════════════════════════════════════════════════════════
+
+A URL deve ser algo assim:
+postgresql://fitbooking_user:senha123@dpg-abc123.oregon-postgres.render.com:5432/fitbooking
+
+Se começar com "postgresql://", está correto! ✅
+
+═══════════════════════════════════════════════════════════

@@ -1,0 +1,121 @@
+═══════════════════════════════════════════════════════════
+  ONDE ENCONTRAR DATABASE_URL NO RENDER
+═══════════════════════════════════════════════════════════
+
+Se você não está encontrando a aba "Info" ou "Connections",
+siga estas alternativas:
+
+═══════════════════════════════════════════════════════════
+OPÇÃO 1 - NA PÁGINA PRINCIPAL DO BANCO:
+═══════════════════════════════════════════════════════════
+
+1. Você está na página do banco "personal-trainer-db", certo?
+
+2. Olhe na PARTE SUPERIOR da página (logo abaixo do nome do banco)
+
+3. Procure por uma seção que mostra:
+   - "Status: Available" ou "Status: Running"
+   - "Region: ..."
+   - "Plan: Free"
+
+4. Logo abaixo ou ao lado, pode ter:
+   - "Internal Database URL" (pode estar oculto - clique para revelar)
+   - "Connection String"
+   - Um botão "Show" ou "Reveal" ao lado da URL
+
+5. Se tiver um botão "Show" ou um ícone de olho 👁️, CLIQUE nele
+   para revelar a URL
+
+═══════════════════════════════════════════════════════════
+OPÇÃO 2 - PROCURAR POR "CREDENTIALS":
+═══════════════════════════════════════════════════════════
+
+1. Na página do banco, procure por:
+   - "Credentials" (credenciais)
+   - "Default Credential"
+   - "Database Credentials"
+
+2. CLIQUE em "Credentials" ou "Database Credentials"
+
+3. Vai mostrar:
+   - Host
+   - Port
+   - Database
+   - User
+   - Password
+
+4. Você pode montar a URL manualmente:
+   postgresql://USER:PASSWORD@HOST:PORT/DATABASE
+
+   Exemplo:
+   postgresql://fitbooking_user:senha123@dpg-xxxxx:5432/fitbooking
+
+═══════════════════════════════════════════════════════════
+OPÇÃO 3 - NA PÁGINA "OVERVIEW":
+═══════════════════════════════════════════════════════════
+
+1. Na página do banco, procure a aba "Overview" (Visão Geral)
+
+2. CLIQUE em "Overview"
+
+3. Role a página para BAIXO
+
+4. Procure por uma seção que diz:
+   - "Connection Information"
+   - "Database Connection"
+   - "Connect to this database"
+
+5. Pode ter um botão "Copy Connection String" ou similar
+
+═══════════════════════════════════════════════════════════
+OPÇÃO 4 - USAR O LINK AUTOMÁTICO:
+═══════════════════════════════════════════════════════════
+
+1. Volte para o serviço "personal-trainer-api"
+
+2. Vá em "Environment"
+
+3. Procure um botão ou link que diz:
+   - "Link Database"
+   - "Connect Database"
+   - "Add Database"
+
+4. Se encontrar, CLIQUE nele
+
+5. Vai mostrar uma lista de bancos disponíveis
+
+6. Selecione "personal-trainer-db"
+
+7. O Render vai adicionar DATABASE_URL automaticamente!
+
+═══════════════════════════════════════════════════════════
+OPÇÃO 5 - MONTAR A URL MANUALMENTE:
+═══════════════════════════════════════════════════════════
+
+Se você conseguir ver as informações separadas:
+
+1. Na página do banco, procure por:
+   - Host: (algo como dpg-xxxxx-a.oregon-postgres.render.com)
+   - Port: 5432
+   - Database: fitbooking
+   - User: fitbooking_user
+   - Password: (pode estar oculto - clique para revelar)
+
+2. Monte a URL assim:
+   postgresql://USER:PASSWORD@HOST:PORT/DATABASE
+
+   Exemplo completo:
+   postgresql://fitbooking_user:minhasenha@dpg-abc123.oregon-postgres.render.com:5432/fitbooking
+
+═══════════════════════════════════════════════════════════
+DICA IMPORTANTE:
+═══════════════════════════════════════════════════════════
+
+Se você NÃO conseguir encontrar a URL, tente:
+
+1. Tire uma FOTO da tela do banco e me mostre
+2. Ou me diga o que você está vendo na tela
+3. Vou te ajudar a encontrar!
+
+═══════════════════════════════════════════════════════════
+

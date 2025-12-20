@@ -1,0 +1,64 @@
+═══════════════════════════════════════════════════════════
+  SOLUÇÃO RÁPIDA - DATABASE_URL
+═══════════════════════════════════════════════════════════
+
+Se você não está encontrando a URL, tente isso:
+
+═══════════════════════════════════════════════════════════
+MÉTODO MAIS FÁCIL:
+═══════════════════════════════════════════════════════════
+
+1. Volte para o serviço "personal-trainer-api"
+
+2. Vá em "Environment"
+
+3. Procure um botão "Link Database" ou "Connect Database"
+   (pode estar no topo da página ou no menu lateral)
+
+4. Se encontrar esse botão:
+   - CLIQUE nele
+   - Selecione o banco "personal-trainer-db"
+   - O Render adiciona DATABASE_URL automaticamente!
+   - PRONTO! ✅
+
+═══════════════════════════════════════════════════════════
+SE NÃO ENCONTRAR O BOTÃO "LINK DATABASE":
+═══════════════════════════════════════════════════════════
+
+1. Na página do banco PostgreSQL, procure por:
+
+   a) Um botão "Show" ou ícone de olho 👁️
+      - CLIQUE para revelar a URL oculta
+
+   b) Uma seção "Connection Information"
+      - Pode estar na página principal
+      - Role para baixo
+
+   c) Aba "Credentials" ou "Database Credentials"
+      - Mostra Host, Port, Database, User, Password
+      - Você monta a URL manualmente
+
+═══════════════════════════════════════════════════════════
+FORMATO DA URL:
+═══════════════════════════════════════════════════════════
+
+A URL deve ser assim:
+postgresql://USER:PASSWORD@HOST:PORT/DATABASE
+
+Exemplo:
+postgresql://fitbooking_user:senha123@dpg-abc123.oregon-postgres.render.com:5432/fitbooking
+
+═══════════════════════════════════════════════════════════
+ME AJUDE:
+═══════════════════════════════════════════════════════════
+
+Tire uma FOTO da tela do banco e me mostre!
+Ou me diga:
+- O que você está vendo na tela?
+- Tem algum botão "Show" ou "Reveal"?
+- Tem alguma seção "Credentials"?
+
+Vou te ajudar a encontrar! 🔍
+
+═══════════════════════════════════════════════════════════
+

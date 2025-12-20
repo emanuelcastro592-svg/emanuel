@@ -1,0 +1,89 @@
+═══════════════════════════════════════════════════════════
+  IR PARA A PÁGINA DO BANCO POSTGRESQL
+═══════════════════════════════════════════════════════════
+
+Você está na página do SERVIÇO WEB, mas precisa ir para a página do BANCO!
+
+═══════════════════════════════════════════════════════════
+COMO IR PARA O BANCO:
+═══════════════════════════════════════════════════════════
+
+OPÇÃO 1 - PELO DASHBOARD:
+──────────────────────────
+
+1. No topo da página, procure "My project" ou "Dashboard"
+
+2. CLIQUE em "My project" ou "Dashboard"
+
+3. Vai mostrar uma lista de serviços:
+   - personal-trainer-api (serviço web)
+   - personal-trainer-db (banco PostgreSQL) ← CLIQUE AQUI!
+
+4. CLIQUE no banco "personal-trainer-db"
+
+5. Agora você está na página do BANCO!
+
+═══════════════════════════════════════════════════════════
+OPÇÃO 2 - PELO MENU LATERAL:
+─────────────────────────────
+
+1. Olhe no MENU LATERAL ESQUERDO
+
+2. No topo, você deve ver:
+   - "My project" ou "Dashboard"
+
+3. CLIQUE nele
+
+4. Vai mostrar todos os serviços
+
+5. Procure "personal-trainer-db" (banco PostgreSQL)
+
+6. CLIQUE nele
+
+═══════════════════════════════════════════════════════════
+OPÇÃO 3 - PELO BOTÃO "NEW +":
+──────────────────────────────
+
+1. No topo do Render, clique em "New +" (canto superior direito)
+
+2. Mas NÃO crie um novo banco!
+
+3. Procure uma lista de serviços existentes
+
+4. Procure "personal-trainer-db"
+
+5. CLIQUE nele
+
+═══════════════════════════════════════════════════════════
+DEPOIS DE IR PARA O BANCO:
+═══════════════════════════════════════════════════════════
+
+1. Você vai estar na página do banco "personal-trainer-db"
+
+2. No menu lateral, procure:
+   - "Info" ← CLIQUE AQUI!
+   - "Connections"
+   - "Overview"
+
+3. CLIQUE em "Info"
+
+4. Role a página para BAIXO
+
+5. Procure por:
+   - "Internal Database URL"
+   - "Connection String"
+   - "Connection Information"
+
+6. COPIE a URL que começa com "postgresql://"
+
+═══════════════════════════════════════════════════════════
+RESUMO:
+═══════════════════════════════════════════════════════════
+
+1. Volte para o Dashboard/My project
+2. Clique no banco "personal-trainer-db"
+3. Vá em "Info"
+4. Procure a URL do banco
+5. Copie!
+
+═══════════════════════════════════════════════════════════

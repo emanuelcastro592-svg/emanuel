@@ -53,3 +53,4 @@ Write-Host "  Todos os processos foram parados!" -ForegroundColor Green
 Write-Host "========================================" -ForegroundColor Green
 
 
+

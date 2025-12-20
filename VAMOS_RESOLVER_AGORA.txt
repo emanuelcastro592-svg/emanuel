@@ -1,0 +1,105 @@
+═══════════════════════════════════════════════════════════
+  VOCÊ ESTÁ QUASE LÁ! VAMOS RESOLVER AGORA!
+═══════════════════════════════════════════════════════════
+
+Você está na página "Events" (Eventos).
+
+Os deploys estão falhando porque falta a variável DATABASE_URL.
+
+═══════════════════════════════════════════════════════════
+PASSO 1 - IR PARA "ENVIRONMENT":
+═══════════════════════════════════════════════════════════
+
+1. Olhe no MENU LATERAL ESQUERDO
+
+2. Procure a seção "MANAGE"
+
+3. Você vai ver:
+   - Environment  ← CLIQUE AQUI!
+   - Shell
+   - Scaling
+   - etc.
+
+4. CLIQUE em "Environment"
+
+5. Agora você vai ver as variáveis de ambiente:
+   - JWT_SECRET
+   - NODE_ENV
+   - PORT
+
+═══════════════════════════════════════════════════════════
+PASSO 2 - CRIAR BANCO (se ainda não criou):
+═══════════════════════════════════════════════════════════
+
+1. No topo do Render, clique em "New +" (canto superior direito)
+
+2. Selecione "PostgreSQL"
+
+3. Preencha:
+   - Name: personal-trainer-db
+   - Database: fitbooking
+   - User: fitbooking_user
+   - Region: (escolha uma)
+   - Plan: Free
+
+4. Clique em "Create Database"
+
+5. AGUARDE criar (1-2 minutos)
+
+═══════════════════════════════════════════════════════════
+PASSO 3 - COPIAR URL DO BANCO:
+═══════════════════════════════════════════════════════════
+
+1. Depois que o banco for criado, CLIQUE nele
+
+2. Na página do banco, procure:
+   - Um botão "Show" ou ícone de olho 👁️
+   - Ou uma seção "Internal Database URL"
+   - Ou aba "Credentials"
+
+3. COPIE a URL completa
+   (algo como: postgresql://user:password@host:5432/database)
+
+═══════════════════════════════════════════════════════════
+PASSO 4 - ADICIONAR DATABASE_URL:
+═══════════════════════════════════════════════════════════
+
+1. Volte para o serviço "personal-trainer-api"
+
+2. Vá em "Environment" (menu lateral)
+
+3. Procure um botão:
+   - "Edit" OU
+   - "Add" OU
+   - "+" OU
+   - "Add Environment Variable"
+
+4. CLIQUE nele
+
+5. Preencha:
+   - Key: DATABASE_URL
+   - Value: Cole a URL que você copiou
+
+6. Clique em "Save" ou "Save Changes"
+
+═══════════════════════════════════════════════════════════
+PASSO 5 - DEPLOY:
+═══════════════════════════════════════════════════════════
+
+1. Clique em "Manual Deploy" (canto superior direito)
+
+2. Selecione "Deploy latest commit"
+
+3. Aguarde terminar!
+
+═══════════════════════════════════════════════════════════
+RESUMO:
+═══════════════════════════════════════════════════════════
+
+1. Menu lateral → "Environment"
+2. Criar banco PostgreSQL
+3. Copiar URL do banco
+4. Adicionar DATABASE_URL em "Environment"
+5. Fazer deploy
+
+═══════════════════════════════════════════════════════════

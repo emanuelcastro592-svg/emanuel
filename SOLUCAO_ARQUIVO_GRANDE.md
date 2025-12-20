@@ -65,3 +65,4 @@ Depois tente fazer ZIP novamente.
 **Use a Opção 1 (script)** - é mais fácil e não tem limite de tamanho!
 
 **O Git não tem limite de 25MB!** ✅
+

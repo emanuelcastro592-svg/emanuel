@@ -67,3 +67,4 @@ No Render, configure estas variáveis:
 O código foi atualizado para usar `DATABASE_URL` automaticamente quando disponível (padrão do Render).
 
 Apenas adicione a variável `DATABASE_URL` e faça um novo deploy!
+

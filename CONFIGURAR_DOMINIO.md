@@ -115,3 +115,4 @@ O servidor precisa servir os arquivos estáticos do build.
 3. Você tem IP público fixo?
 
 Com essas informações, eu te ajudo a configurar tudo! 🚀
+

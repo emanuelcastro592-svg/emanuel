@@ -100,3 +100,4 @@ Posso criar:
 - ✅ Guias passo a passo detalhados
 
 **Quer que eu prepare tudo para deploy em Vercel + Render?** 🚀
+

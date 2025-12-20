@@ -1,0 +1,75 @@
+═══════════════════════════════════════════════════════════
+  O QUE O AVISO ESTÁ FALANDO?
+═══════════════════════════════════════════════════════════
+
+O aviso roxo diz:
+"Your database will expire on January 18, 2026. 
+The database will be deleted unless you upgrade to a paid instance type."
+
+═══════════════════════════════════════════════════════════
+TRADUÇÃO:
+═══════════════════════════════════════════════════════════
+
+"Seu banco vai expirar em 18 de janeiro de 2026.
+O banco será deletado a menos que você faça upgrade
+para um plano pago."
+
+═══════════════════════════════════════════════════════════
+O QUE ISSO SIGNIFICA:
+═══════════════════════════════════════════════════════════
+
+✅ NÃO É URGENTE AGORA!
+✅ Você tem até 18 de janeiro de 2026
+✅ Por enquanto, pode IGNORAR esse aviso
+✅ O banco vai funcionar normalmente até lá
+
+═══════════════════════════════════════════════════════════
+O QUE FAZER AGORA:
+═══════════════════════════════════════════════════════════
+
+IGNORE o aviso por enquanto e vamos encontrar a URL do banco!
+
+═══════════════════════════════════════════════════════════
+ONDE ESTÁ A URL DO BANCO:
+═══════════════════════════════════════════════════════════
+
+1. Olhe no CANTO SUPERIOR DIREITO da página do banco
+
+2. Procure um botão que diz "Connect" (Conectar)
+
+3. CLIQUE no botão "Connect"
+
+4. Vai abrir um menu com opções:
+   - "Internal Database URL" ← CLIQUE AQUI!
+   - "External Database URL"
+   - etc.
+
+5. CLIQUE em "Internal Database URL"
+
+6. Vai mostrar a URL completa!
+
+7. COPIE essa URL (CTRL+C)
+
+═══════════════════════════════════════════════════════════
+SE NÃO ENCONTRAR O BOTÃO "CONNECT":
+═══════════════════════════════════════════════════════════
+
+1. Procure uma aba "Connections" no topo da página
+
+2. Ou procure uma seção "Connection Information"
+
+3. Ou role a página para BAIXO e procure por "Internal Database URL"
+
+═══════════════════════════════════════════════════════════
+DEPOIS DE COPIAR A URL:
+═══════════════════════════════════════════════════════════
+
+1. Volte para o serviço "personal-trainer-api"
+
+2. Vá em "Environment" (menu lateral)
+
+3. Adicione a variável DATABASE_URL com a URL que você copiou
+
+4. Faça o deploy!
+
+═══════════════════════════════════════════════════════════

@@ -95,3 +95,4 @@ O plano grátis do Render pode "dormir" após 15 minutos sem uso.
 ## 📞 Próximo Passo
 
 Depois que a API estiver no ar, faça o deploy do frontend no Vercel!
+

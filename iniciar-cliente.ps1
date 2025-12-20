@@ -20,3 +20,4 @@ Write-Host "Para parar o cliente, execute: .\parar-cliente.ps1" -ForegroundColor
 Write-Host "Ou feche a janela do PowerShell que foi aberta." -ForegroundColor Cyan
 
 
+

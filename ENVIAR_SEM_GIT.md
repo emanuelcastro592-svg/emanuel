@@ -52,3 +52,4 @@ Os arquivos foram extraídos. Agora você precisa enviá-los manualmente para o 
 Se tiver muitos arquivos, você pode enviar em partes:
 - Primeiro: `server/` e `client/`
 - Depois: arquivos da raiz (`package.json`, `Procfile`, etc.)
+

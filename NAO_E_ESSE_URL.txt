@@ -1,0 +1,71 @@
+═══════════════════════════════════════════════════════════
+  NÃO! ESSE NÃO É O URL DO BANCO!
+═══════════════════════════════════════════════════════════
+
+O que você está vendo:
+❌ "Outbound IP Addresses" (Endereços IP de Saída)
+❌ IPs como: 74.220.49.0/24
+❌ Isso NÃO é a URL do banco!
+
+═══════════════════════════════════════════════════════════
+O QUE VOCÊ PRECISA:
+═══════════════════════════════════════════════════════════
+
+✅ Uma URL que começa com: postgresql://
+✅ Algo como: postgresql://user:password@host:5432/database
+
+═══════════════════════════════════════════════════════════
+ONDE ENCONTRAR A URL CORRETA:
+═══════════════════════════════════════════════════════════
+
+1. FECHE esse pop-up de "Outbound"
+
+2. Você está na página do BANCO "personal-trainer-db", certo?
+
+3. Olhe no CANTO SUPERIOR DIREITO da página
+
+4. Procure um botão "Connect" (com seta para baixo)
+
+5. CLIQUE no botão "Connect"
+
+6. Vai abrir um MENU com opções:
+   - Internal Database URL ← CLIQUE AQUI!
+   - External Database URL
+   - etc.
+
+7. CLIQUE em "Internal Database URL"
+
+8. Vai mostrar a URL completa que começa com "postgresql://"
+
+9. COPIE essa URL (CTRL+C)
+
+═══════════════════════════════════════════════════════════
+COMO SABER SE É A URL CERTA:
+═══════════════════════════════════════════════════════════
+
+A URL correta deve:
+✅ Começar com: postgresql://
+✅ Ter formato: postgresql://user:password@host:5432/database
+✅ Ser uma URL longa com vários caracteres
+
+Exemplo de URL correta:
+postgresql://fitbooking_user:senha123@dpg-abc123.oregon-postgres.render.com:5432/fitbooking
+
+═══════════════════════════════════════════════════════════
+O QUE VOCÊ VIU (ERRADO):
+═══════════════════════════════════════════════════════════
+
+❌ 74.220.49.0/24
+❌ Isso são IPs de saída, não URL do banco!
+
+═══════════════════════════════════════════════════════════
+RESUMO:
+═══════════════════════════════════════════════════════════
+
+1. Feche o pop-up "Outbound"
+2. Clique no botão "Connect" (canto superior direito)
+3. Escolha "Internal Database URL"
+4. Copie a URL que começa com "postgresql://"
+5. Essa é a URL correta!
+
+═══════════════════════════════════════════════════════════

@@ -209,3 +209,4 @@ pm2 startup  # Configurar início automático
 3. ✅ Qual é o IP do seu servidor?
 
 Com essas informações, posso ajudar com a configuração específica! 🚀
+

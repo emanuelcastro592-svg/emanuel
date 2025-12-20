@@ -51,3 +51,4 @@ echo Ele reiniciara automaticamente se houver falhas.
 echo.
 pause
 
+

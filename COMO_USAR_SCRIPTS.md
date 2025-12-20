@@ -91,3 +91,4 @@ Para verificar se o servidor e cliente estão rodando, você pode:
 - Tente acessar http://localhost:5000/api/test para verificar se o servidor está respondendo
 
 
+

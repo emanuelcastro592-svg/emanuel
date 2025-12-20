@@ -146,3 +146,4 @@ pm2 save
 
 **É só isso!** Não precisa abrir outra janela do CMD. Tudo acontece na mesma janela que abriu! 🎉
 
+

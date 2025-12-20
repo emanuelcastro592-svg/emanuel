@@ -29,3 +29,4 @@ Write-Host "Para parar tudo, execute: .\parar-tudo.ps1" -ForegroundColor Yellow
 Write-Host "Ou feche as janelas do PowerShell que foram abertas." -ForegroundColor Yellow
 
 
+

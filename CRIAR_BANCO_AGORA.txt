@@ -1,0 +1,94 @@
+═══════════════════════════════════════════════════════════
+  O BANCO NÃO ESTÁ NA LISTA - VAMOS CRIAR!
+═══════════════════════════════════════════════════════════
+
+Você só vê "personal-trainer-api" na lista.
+O banco "personal-trainer-db" não existe ainda!
+
+Vamos criar o banco AGORA!
+
+═══════════════════════════════════════════════════════════
+PASSO 1 - CRIAR BANCO POSTGRESQL:
+═══════════════════════════════════════════════════════════
+
+1. No topo da página, procure o botão "New +" (canto superior direito)
+
+2. CLIQUE em "New +"
+
+3. Vai abrir um menu com opções:
+   - Web Service
+   - Background Worker
+   - PostgreSQL ← CLIQUE AQUI!
+   - Redis
+   - etc.
+
+4. CLIQUE em "PostgreSQL"
+
+═══════════════════════════════════════════════════════════
+PASSO 2 - PREENCHER O FORMULÁRIO:
+═══════════════════════════════════════════════════════════
+
+1. Vai abrir um formulário. Preencha:
+
+   Name: personal-trainer-db
+   Database: fitbooking
+   User: fitbooking_user
+   PostgreSQL Version: (deixe padrão - 18)
+   Region: Virginia (ou a mesma do serviço web)
+   Plan: Free
+
+2. Depois de preencher, role a página para BAIXO
+
+3. Procure o botão "Create Database" (verde)
+
+4. CLIQUE em "Create Database"
+
+5. AGUARDE criar (1-2 minutos)
+
+═══════════════════════════════════════════════════════════
+PASSO 3 - DEPOIS QUE O BANCO FOR CRIADO:
+═══════════════════════════════════════════════════════════
+
+1. O banco vai aparecer na lista de serviços
+
+2. CLIQUE no banco "personal-trainer-db"
+
+3. Vá em "Info" (menu lateral)
+
+4. Role a página para BAIXO
+
+5. Procure por "Internal Database URL" ou "Connection String"
+
+6. COPIE a URL que começa com "postgresql://"
+
+═══════════════════════════════════════════════════════════
+PASSO 4 - ADICIONAR NO SERVIÇO WEB:
+═══════════════════════════════════════════════════════════
+
+1. Volte para "personal-trainer-api"
+
+2. Vá em "Environment" (menu lateral)
+
+3. Clique em "Edit" (botão preto)
+
+4. Adicione:
+   - Key: DATABASE_URL
+   - Value: Cole a URL que você copiou
+
+5. Salve
+
+6. Faça deploy!
+
+═══════════════════════════════════════════════════════════
+RESUMO:
+═══════════════════════════════════════════════════════════
+
+1. Clique em "New +" → "PostgreSQL"
+2. Preencha o formulário
+3. Clique em "Create Database"
+4. Aguarde criar
+5. Copie a URL do banco
+6. Adicione DATABASE_URL no serviço web
+7. Faça deploy!
+
+═══════════════════════════════════════════════════════════

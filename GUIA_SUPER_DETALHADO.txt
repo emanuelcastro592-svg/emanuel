@@ -1,0 +1,160 @@
+═══════════════════════════════════════════════════════════
+  GUIA SUPER DETALHADO - PASSO A PASSO
+═══════════════════════════════════════════════════════════
+
+Vou te guiar CLICK por CLICK!
+
+═══════════════════════════════════════════════════════════
+PARTE 1 - CRIAR BANCO POSTGRESQL:
+═══════════════════════════════════════════════════════════
+
+1. Você está no Render Dashboard, certo?
+
+2. Olhe no CANTO SUPERIOR DIREITO da tela
+   Procure um botão que diz "New +" ou só "+"
+   (geralmente é verde ou azul)
+
+3. CLIQUE nesse botão "New +"
+
+4. Vai abrir um MENU DROP-DOWN com opções:
+   - Web Service
+   - Background Worker
+   - PostgreSQL  ← CLIQUE AQUI!
+   - Redis
+   - etc.
+
+5. CLIQUE em "PostgreSQL"
+
+6. Vai abrir um FORMULÁRIO. Preencha:
+
+   ┌─────────────────────────────────────┐
+   │ Name: personal-trainer-db           │
+   │ Database: fitbooking                │
+   │ User: fitbooking_user              │
+   │ Region: (escolha uma - qualquer)    │
+   │ PostgreSQL Version: (deixe padrão) │
+   │ Plan: Free                          │
+   └─────────────────────────────────────┘
+
+7. Depois de preencher, role a página para BAIXO
+
+8. Procure o botão "Create Database" (verde)
+
+9. CLIQUE em "Create Database"
+
+10. AGUARDE aparecer a mensagem de sucesso
+    (pode demorar 1-2 minutos)
+
+═══════════════════════════════════════════════════════════
+PARTE 2 - COPIAR A URL DO BANCO:
+═══════════════════════════════════════════════════════════
+
+1. Depois que o banco for criado, você vai ver ele na lista
+
+2. CLIQUE no nome do banco: "personal-trainer-db"
+
+3. Vai abrir a página do banco
+
+4. Procure por ABAS no topo:
+   - Overview
+   - Info          ← CLIQUE AQUI!
+   - Connections
+   - Logs
+   - etc.
+
+5. CLIQUE na aba "Info" ou "Connections"
+
+6. Procure por uma seção que diz:
+   - "Internal Database URL" OU
+   - "Connection String" OU
+   - "DATABASE_URL"
+
+7. Vai ter um campo com uma URL tipo:
+   postgresql://user:password@host:5432/database
+
+8. CLIQUE nessa URL para selecionar
+
+9. Pressione CTRL+C para copiar
+
+10. ANOTE essa URL em algum lugar (bloco de notas)
+
+═══════════════════════════════════════════════════════════
+PARTE 3 - ADICIONAR NO SERVIÇO WEB:
+═══════════════════════════════════════════════════════════
+
+1. Volte para o Dashboard (clique em "Dashboard" no menu)
+
+2. Procure o serviço "personal-trainer-api" na lista
+
+3. CLIQUE nele
+
+4. No menu LATERAL ESQUERDO, procure:
+   - Overview
+   - Logs
+   - Environment  ← CLIQUE AQUI!
+   - Settings
+   - etc.
+
+5. CLIQUE em "Environment"
+
+6. Você vai ver uma lista de variáveis:
+   - JWT_SECRET
+   - NODE_ENV
+   - PORT
+
+7. Procure um botão que diz:
+   - "Edit" OU
+   - "Add" OU
+   - "+" OU
+   - "Add Environment Variable"
+
+8. CLIQUE nesse botão
+
+9. Vai abrir um formulário com 2 campos:
+   ┌─────────────────────────────────────┐
+   │ Key: [digite aqui]                  │
+   │ Value: [cole aqui]                  │
+   └─────────────────────────────────────┘
+
+10. No campo "Key", digite:
+    DATABASE_URL
+
+11. No campo "Value", cole a URL que você copiou
+    (CTRL+V)
+
+12. Procure um botão "Save" ou "Save Changes"
+
+13. CLIQUE em "Save"
+
+14. PRONTO! Agora você deve ver DATABASE_URL na lista!
+
+═══════════════════════════════════════════════════════════
+PARTE 4 - FAZER DEPLOY:
+═══════════════════════════════════════════════════════════
+
+1. Ainda na página do serviço "personal-trainer-api"
+
+2. Procure no CANTO SUPERIOR DIREITO:
+   - "Manual Deploy" (botão)
+
+3. CLIQUE em "Manual Deploy"
+
+4. Vai abrir um menu - escolha:
+   "Deploy latest commit"
+
+5. CLIQUE nele
+
+6. Aguarde o deploy terminar (5-10 minutos)
+
+7. PRONTO! Seu site está no ar! 🎉
+
+═══════════════════════════════════════════════════════════
+SE ALGO DER ERRADO:
+═══════════════════════════════════════════════════════════
+
+- Tire uma FOTO da tela e me mostre
+- Ou me diga em qual passo você está travado
+- Vou te ajudar a resolver!
+
+═══════════════════════════════════════════════════════════
+

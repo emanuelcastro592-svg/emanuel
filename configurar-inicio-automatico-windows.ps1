@@ -67,3 +67,4 @@ Write-Host "  - Execute: REMOVER-INICIO-AUTOMATICO.bat" -ForegroundColor Gray
 Write-Host ""
 pause
 
+

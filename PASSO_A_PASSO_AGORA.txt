@@ -1,0 +1,67 @@
+═══════════════════════════════════════════════════════════
+  VOCÊ ESTÁ NO LUGAR CERTO! ✅
+═══════════════════════════════════════════════════════════
+
+Você está na página "Environment" do serviço web.
+
+Agora precisa criar o banco PostgreSQL e conectar.
+
+═══════════════════════════════════════════════════════════
+PASSO 1 - CRIAR BANCO POSTGRESQL:
+═══════════════════════════════════════════════════════════
+
+1. No Render, clique em "New +" (canto superior direito)
+
+2. Selecione "PostgreSQL"
+
+3. Configure:
+   - Name: personal-trainer-db
+   - Database: fitbooking
+   - User: fitbooking_user
+   - Region: Escolha a MESMA região do seu serviço web
+   - Plan: Free (se disponível)
+
+4. Clique em "Create Database"
+
+5. AGUARDE criar (1-2 minutos)
+
+═══════════════════════════════════════════════════════════
+PASSO 2 - CONECTAR BANCO AO SERVIÇO WEB:
+═══════════════════════════════════════════════════════════
+
+1. Depois que o banco for criado, volte para o serviço:
+   "personal-trainer-api"
+
+2. Vá em "Environment" (onde você está agora)
+
+3. Procure um botão:
+   - "Link Database" OU
+   - "Add Database" OU
+   - "Connect Database"
+
+4. Selecione o banco: "personal-trainer-db"
+
+5. O Render vai adicionar DATABASE_URL automaticamente!
+
+═══════════════════════════════════════════════════════════
+PASSO 3 - VERIFICAR:
+═══════════════════════════════════════════════════════════
+
+Depois de conectar, você deve ver:
+✅ JWT_SECRET
+✅ NODE_ENV
+✅ PORT
+✅ DATABASE_URL (NOVO!)
+
+═══════════════════════════════════════════════════════════
+PASSO 4 - DEPLOY:
+═══════════════════════════════════════════════════════════
+
+1. Clique em "Manual Deploy" (canto superior direito)
+
+2. Selecione "Deploy latest commit"
+
+3. Aguarde terminar!
+
+═══════════════════════════════════════════════════════════
+

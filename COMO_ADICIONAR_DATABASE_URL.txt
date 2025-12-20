@@ -1,0 +1,82 @@
+═══════════════════════════════════════════════════════════
+  COMO ADICIONAR DATABASE_URL - PASSO A PASSO
+═══════════════════════════════════════════════════════════
+
+SIM! Você está no lugar CERTO! ✅
+
+Você está na página "Environment" e vê:
+- JWT_SECRET
+- NODE_ENV
+- PORT
+
+Agora vamos adicionar DATABASE_URL aqui mesmo!
+
+═══════════════════════════════════════════════════════════
+PASSO 1 - CLICAR EM "EDIT":
+═══════════════════════════════════════════════════════════
+
+1. Olhe no canto DIREITO da seção "Environment Variables"
+
+2. Você vai ver dois botões:
+   - "Export" (com seta)
+   - "Edit" (botão PRETO) ← CLIQUE AQUI!
+
+3. CLIQUE no botão "Edit"
+
+4. Vai abrir uma tela para editar as variáveis
+
+═══════════════════════════════════════════════════════════
+PASSO 2 - ADICIONAR NOVA VARIÁVEL:
+═══════════════════════════════════════════════════════════
+
+1. Na tela de edição, procure um botão:
+   - "Add Environment Variable" OU
+   - "+" OU
+   - "Add"
+
+2. CLIQUE nele
+
+3. Vai aparecer dois campos:
+   ┌─────────────────────────────────────┐
+   │ Key: [digite aqui]                  │
+   │ Value: [cole aqui]                  │
+   └─────────────────────────────────────┘
+
+4. No campo "Key", digite:
+   DATABASE_URL
+
+5. No campo "Value", COLE a URL do banco que você copiou
+   (a URL que você pegou do botão "Connect" do banco)
+
+═══════════════════════════════════════════════════════════
+PASSO 3 - SALVAR:
+═══════════════════════════════════════════════════════════
+
+1. Procure um botão "Save" ou "Save Changes"
+
+2. CLIQUE nele
+
+3. PRONTO! Agora você vai ver DATABASE_URL na lista!
+
+═══════════════════════════════════════════════════════════
+PASSO 4 - FAZER DEPLOY:
+═══════════════════════════════════════════════════════════
+
+1. Depois de salvar, clique em "Manual Deploy" (canto superior direito)
+
+2. Selecione "Deploy latest commit"
+
+3. Aguarde terminar!
+
+═══════════════════════════════════════════════════════════
+RESUMO:
+═══════════════════════════════════════════════════════════
+
+1. Clique em "Edit" (botão preto)
+2. Clique em "Add Environment Variable" ou "+"
+3. Key: DATABASE_URL
+4. Value: Cole a URL do banco
+5. Salve
+6. Faça deploy!
+
+═══════════════════════════════════════════════════════════

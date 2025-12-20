@@ -1,0 +1,69 @@
+═══════════════════════════════════════════════════════════
+  DEPLOY TRAVADO - VAMOS VERIFICAR OS LOGS
+═══════════════════════════════════════════════════════════
+
+Se o deploy está travado há mais de 10 minutos, vamos ver os logs!
+
+═══════════════════════════════════════════════════════════
+PASSO 1 - VER OS LOGS:
+═══════════════════════════════════════════════════════════
+
+1. No menu lateral esquerdo, procure "MONITOR"
+
+2. Você vai ver:
+   - Logs ← CLIQUE AQUI!
+   - Metrics
+
+3. CLIQUE em "Logs"
+
+4. Vai mostrar o que está acontecendo no deploy
+
+5. Role a página para BAIXO para ver os erros mais recentes
+
+═══════════════════════════════════════════════════════════
+PASSO 2 - PROCURAR POR ERROS:
+═══════════════════════════════════════════════════════════
+
+Nos logs, procure por:
+- ❌ "Error"
+- ❌ "Failed"
+- ❌ "ECONNREFUSED"
+- ❌ "Cannot find module"
+- ❌ Qualquer texto em VERMELHO
+
+═══════════════════════════════════════════════════════════
+PASSO 3 - ME MOSTRAR O ERRO:
+═══════════════════════════════════════════════════════════
+
+1. Copie a mensagem de erro que aparecer nos logs
+
+2. Ou tire uma FOTO dos logs
+
+3. Me mostre para eu te ajudar a resolver!
+
+═══════════════════════════════════════════════════════════
+ERROS COMUNS:
+═══════════════════════════════════════════════════════════
+
+1. "Cannot find module 'pg'"
+   → Falta instalar dependências
+
+2. "ECONNREFUSED 127.0.0.1:5432"
+   → DATABASE_URL não está configurada corretamente
+
+3. "Port 5000 already in use"
+   → Conflito de porta
+
+4. "Build failed"
+   → Erro na compilação
+
+═══════════════════════════════════════════════════════════
+RESUMO:
+═══════════════════════════════════════════════════════════
+
+1. Vá em "Logs" (menu lateral)
+2. Veja os erros
+3. Me mostre o erro
+4. Vou te ajudar a resolver!
+
+═══════════════════════════════════════════════════════════

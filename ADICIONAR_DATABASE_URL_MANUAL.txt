@@ -1,0 +1,75 @@
+═══════════════════════════════════════════════════════════
+  ADICIONAR DATABASE_URL MANUALMENTE
+═══════════════════════════════════════════════════════════
+
+Se não encontrou o botão "Link Database", faça manualmente:
+
+═══════════════════════════════════════════════════════════
+PASSO 1 - CRIAR BANCO (se ainda não criou):
+═══════════════════════════════════════════════════════════
+
+1. No Render, clique em "New +" (canto superior direito)
+2. Selecione "PostgreSQL"
+3. Configure:
+   - Name: personal-trainer-db
+   - Database: fitbooking
+   - User: fitbooking_user
+   - Region: Mesma do serviço web
+   - Plan: Free
+4. Clique em "Create Database"
+5. AGUARDE criar (1-2 minutos)
+
+═══════════════════════════════════════════════════════════
+PASSO 2 - COPIAR DATABASE_URL:
+═══════════════════════════════════════════════════════════
+
+1. Depois que o banco for criado, CLIQUE NELE
+
+2. Vá na aba "Info" ou "Connections"
+
+3. Procure por:
+   - "Internal Database URL" OU
+   - "Connection String" OU
+   - "DATABASE_URL"
+
+4. COPIE essa URL completa
+   (Vai ser algo como: postgresql://user:password@host:5432/database)
+
+═══════════════════════════════════════════════════════════
+PASSO 3 - ADICIONAR NO SERVIÇO WEB:
+═══════════════════════════════════════════════════════════
+
+1. Volte para o serviço "personal-trainer-api"
+
+2. Vá em "Environment" (menu lateral)
+
+3. Clique no botão "Edit" (ao lado de "Environment Variables")
+
+4. Clique em "Add Environment Variable"
+
+5. Preencha:
+   - Key: DATABASE_URL
+   - Value: Cole a URL que você copiou
+
+6. Clique em "Save Changes"
+
+═══════════════════════════════════════════════════════════
+PASSO 4 - VERIFICAR:
+═══════════════════════════════════════════════════════════
+
+Agora você deve ver:
+✅ JWT_SECRET
+✅ NODE_ENV
+✅ PORT
+✅ DATABASE_URL (NOVO!)
+
+═══════════════════════════════════════════════════════════
+PASSO 5 - DEPLOY:
+═══════════════════════════════════════════════════════════
+
+1. Clique em "Manual Deploy"
+2. Selecione "Deploy latest commit"
+3. Aguarde terminar!
+
+═══════════════════════════════════════════════════════════
+

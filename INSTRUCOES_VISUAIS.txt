@@ -1,0 +1,78 @@
+═══════════════════════════════════════════════════════════
+  ONDE CLICAR - PASSO A PASSO VISUAL
+═══════════════════════════════════════════════════════════
+
+VOCÊ ESTÁ AQUI:
+───────────────
+✅ Render Dashboard
+✅ Serviço: personal-trainer-api
+✅ Página: Environment
+
+═══════════════════════════════════════════════════════════
+OPÇÃO 1 - ADICIONAR DATABASE_URL MANUALMENTE:
+═══════════════════════════════════════════════════════════
+
+1. Na página "Environment" que você está:
+
+2. Procure o botão "Edit" 
+   (geralmente está ao lado de "Environment Variables")
+
+3. CLIQUE em "Edit"
+
+4. Vai abrir uma tela para editar variáveis
+
+5. Clique em "Add Environment Variable" ou "+"
+
+6. Preencha:
+   Key: DATABASE_URL
+   Value: (você vai copiar do banco - veja Passo 2 abaixo)
+
+7. Clique em "Save"
+
+═══════════════════════════════════════════════════════════
+OPÇÃO 2 - PRIMEIRO CRIAR O BANCO:
+═══════════════════════════════════════════════════════════
+
+1. No topo da página do Render, clique em "New +"
+   (canto superior direito, botão verde/azul)
+
+2. Vai abrir um menu - escolha "PostgreSQL"
+
+3. Preencha o formulário:
+   - Name: personal-trainer-db
+   - Database: fitbooking
+   - User: fitbooking_user
+   - Region: (escolha uma)
+   - Plan: Free
+
+4. Clique em "Create Database"
+
+5. AGUARDE criar (1-2 minutos)
+
+6. Depois que criar, CLIQUE no banco criado
+
+7. Na página do banco, procure:
+   - Aba "Info" ou "Connections"
+   - "Internal Database URL" ou "Connection String"
+
+8. COPIE essa URL completa
+
+9. Volte para o serviço "personal-trainer-api"
+
+10. Vá em "Environment" → "Edit" → "Add Environment Variable"
+
+11. Cole a URL no campo "Value"
+
+12. Salve!
+
+═══════════════════════════════════════════════════════════
+DICA:
+═══════════════════════════════════════════════════════════
+
+Se não encontrar o botão "Edit", tente:
+- Procurar por "Add" ou "+"
+- Ou procurar por "Environment Variables" e clicar nele
+- Ou rolar a página para baixo
+
+═══════════════════════════════════════════════════════════
+

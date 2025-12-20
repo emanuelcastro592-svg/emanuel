@@ -20,3 +20,4 @@ Write-Host "Para parar o servidor, execute: .\parar-servidor.ps1" -ForegroundCol
 Write-Host "Ou feche a janela do PowerShell que foi aberta." -ForegroundColor Cyan
 
 
+

@@ -1,0 +1,92 @@
+═══════════════════════════════════════════════════════════
+  ENCONTRAR URL DO BANCO - MÉTODO ALTERNATIVO
+═══════════════════════════════════════════════════════════
+
+Se o botão "Connect" só mostra "Outbound", vamos procurar em outro lugar!
+
+═══════════════════════════════════════════════════════════
+MÉTODO 1 - PROCURAR NA PÁGINA DO BANCO:
+═══════════════════════════════════════════════════════════
+
+1. Você está na página do banco "personal-trainer-db", certo?
+
+2. Olhe no MENU LATERAL ESQUERDO
+
+3. Procure por uma aba chamada:
+   - "Connections" ← TENTE AQUI!
+   - "Info"
+   - "Overview"
+
+4. CLIQUE em "Connections" (se existir)
+
+5. Vai mostrar informações de conexão, incluindo a URL!
+
+═══════════════════════════════════════════════════════════
+MÉTODO 2 - PROCURAR NA PÁGINA "INFO":
+═══════════════════════════════════════════════════════════
+
+1. No menu lateral, clique em "Info"
+
+2. Role a página para BAIXO
+
+3. Procure por uma seção que diz:
+   - "Connection Information"
+   - "Database Connection"
+   - "Internal Database URL"
+   - "Connection String"
+
+4. Se encontrar, COPIE a URL!
+
+═══════════════════════════════════════════════════════════
+MÉTODO 3 - PROCURAR POR "CREDENTIALS":
+═══════════════════════════════════════════════════════════
+
+1. Na página do banco, procure por:
+   - "Credentials"
+   - "Database Credentials"
+   - "Default Credential"
+
+2. CLIQUE nela
+
+3. Vai mostrar:
+   - Host
+   - Port
+   - Database
+   - User
+   - Password
+
+4. Monte a URL manualmente:
+   postgresql://USER:PASSWORD@HOST:PORT/DATABASE
+
+   Exemplo:
+   postgresql://fitbooking_user:senha123@dpg-abc123.oregon-postgres.render.com:5432/fitbooking
+
+═══════════════════════════════════════════════════════════
+MÉTODO 4 - USAR LINK AUTOMÁTICO NO SERVIÇO WEB:
+═══════════════════════════════════════════════════════════
+
+1. Volte para o serviço "personal-trainer-api"
+
+2. Vá em "Environment" (menu lateral)
+
+3. Procure um botão ou link:
+   - "Link Database"
+   - "Connect Database"
+   - "Add Database"
+
+4. Se encontrar, CLIQUE nele
+
+5. Vai mostrar uma lista de bancos
+
+6. Selecione "personal-trainer-db"
+
+7. O Render vai adicionar DATABASE_URL automaticamente!
+
+═══════════════════════════════════════════════════════════
+DICA:
+═══════════════════════════════════════════════════════════
+
+Tire uma FOTO da página do banco e me mostre!
+Assim eu vejo exatamente o que está aparecendo e te ajudo melhor!
+
+═══════════════════════════════════════════════════════════

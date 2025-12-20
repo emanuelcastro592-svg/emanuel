@@ -27,3 +27,4 @@ echo.
 echo Para parar tudo, execute: PARAR-SITE.bat
 echo Ou feche as janelas que foram abertas.
 echo.
+

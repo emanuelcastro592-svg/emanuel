@@ -1,0 +1,79 @@
+═══════════════════════════════════════════════════════════
+  VERIFICAR SE ESTÁ INSTALANDO - PASSO A PASSO
+═══════════════════════════════════════════════════════════
+
+Vamos verificar o que está acontecendo nos logs!
+
+═══════════════════════════════════════════════════════════
+PASSO 1 - VER OS LOGS:
+═══════════════════════════════════════════════════════════
+
+1. No menu lateral, clique em "Logs"
+
+2. Role a página para BAIXO
+
+3. Procure por mensagens como:
+   - "Installing dependencies..."
+   - "npm install"
+   - "Building..."
+   - "Error"
+   - "Failed"
+
+═══════════════════════════════════════════════════════════
+O QUE PROCURAR:
+═══════════════════════════════════════════════════════════
+
+✅ SE ESTÁ INSTALANDO, você vai ver:
+   - "Installing dependencies..."
+   - "npm install"
+   - Lista de pacotes sendo instalados
+   - "added X packages"
+
+❌ SE NÃO ESTÁ INSTALANDO, você vai ver:
+   - "Error"
+   - "Failed"
+   - "Cannot find module"
+   - "Command failed"
+
+═══════════════════════════════════════════════════════════
+ME MOSTRE OS LOGS:
+═══════════════════════════════════════════════════════════
+
+1. Vá em "Logs"
+
+2. Tire uma FOTO dos logs mais recentes
+
+3. Me mostre para eu ver o que está acontecendo!
+
+OU
+
+1. Copie as últimas linhas dos logs
+
+2. Me envie para eu analisar
+
+═══════════════════════════════════════════════════════════
+ERROS COMUNS NA INSTALAÇÃO:
+═══════════════════════════════════════════════════════════
+
+1. "Cannot find module 'pg'"
+   → Dependências não foram instaladas
+
+2. "npm ERR!"
+   → Erro no npm install
+
+3. "Out of memory"
+   → Render free tier tem limite de memória
+
+4. "Build failed"
+   → Erro na compilação do React
+
+═══════════════════════════════════════════════════════════
+RESUMO:
+═══════════════════════════════════════════════════════════
+
+1. Vá em "Logs"
+2. Veja o que está aparecendo
+3. Me mostre os logs
+4. Vou te ajudar a resolver!
+
+═══════════════════════════════════════════════════════════

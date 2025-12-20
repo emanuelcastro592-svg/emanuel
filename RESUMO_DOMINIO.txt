@@ -53,3 +53,4 @@ Execute: configurar-dominio.bat
 Isso vai criar/atualizar os arquivos .env com o domínio.
 
 ═══════════════════════════════════════════════════════════
+

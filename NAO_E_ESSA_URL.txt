@@ -1,0 +1,51 @@
+═══════════════════════════════════════════════════════════
+  NÃO É ESSA URL! ❌
+═══════════════════════════════════════════════════════════
+
+O que você está vendo:
+- "Outbound IP Addresses" (Endereços IP de Saída)
+- 74.220.49.0/24
+- 74.220.57.0/24
+
+Isso NÃO é a URL do banco!
+Isso são os IPs que seu serviço usa para fazer requisições.
+
+═══════════════════════════════════════════════════════════
+A URL DO BANCO É DIFERENTE:
+═══════════════════════════════════════════════════════════
+
+A URL do banco PostgreSQL deve ser algo assim:
+postgresql://user:password@host:5432/database
+
+Exemplo:
+postgresql://fitbooking_user:senha123@dpg-abc123.oregon-postgres.render.com:5432/fitbooking
+
+═══════════════════════════════════════════════════════════
+ONDE ENCONTRAR A URL CORRETA:
+═══════════════════════════════════════════════════════════
+
+1. Feche essa janela (clique em X ou fora dela)
+
+2. Vá para a página do BANCO PostgreSQL:
+   - Clique em "personal-trainer-db" (na lista de serviços)
+
+3. Na página do banco, procure:
+   - Botão "Connect" (canto superior direito)
+   - OU aba "Connections"
+   - OU seção "Connection Information"
+
+4. Clique em "Connect" → "Internal Database URL"
+
+5. COPIE essa URL (vai começar com "postgresql://")
+
+6. ESSA é a URL que você precisa! ✅
+
+═══════════════════════════════════════════════════════════
+RESUMO:
+═══════════════════════════════════════════════════════════
+
+❌ NÃO é: 74.220.49.0/24 (isso são IPs de saída)
+✅ É: postgresql://user:password@host:5432/database
+🎯 Onde: Página do banco → Botão "Connect" → "Internal Database URL"
+
+═══════════════════════════════════════════════════════════
