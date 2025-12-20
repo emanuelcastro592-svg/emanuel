@@ -1,6 +1,23 @@
 // Script de migração para adicionar novas colunas sem perder dados
 const { getDb, run } = require('./db');
 
+// Função auxiliar para verificar se erro é de coluna já existente
+const isColumnExistsError = (error) => {
+  if (!error) return false;
+  const errorMsg = (error.message || '').toLowerCase();
+  const errorCode = error.code;
+  
+  // PostgreSQL retorna código 42701 para coluna duplicada
+  if (errorCode === '42701') return true;
+  
+  // Verificar mensagens comuns
+  if (errorMsg.includes('duplicate column')) return true;
+  if (errorMsg.includes('already exists') && errorMsg.includes('column')) return true;
+  if (errorMsg.includes('column') && errorMsg.includes('of relation') && errorMsg.includes('already exists')) return true;
+  
+  return false;
+};
+
 const migrations = [
   {
     name: 'add_user_fields',
@@ -12,90 +29,99 @@ const migrations = [
         await run(`ALTER TABLE users ADD COLUMN avatar TEXT`);
         console.log('✅ Coluna avatar adicionada');
       } catch (e) {
-        if (!e.message.includes('duplicate column') && !e.message.includes('already exists')) {
+        if (isColumnExistsError(e)) {
+          console.log('ℹ️ Coluna avatar já existe, pulando...');
+        } else {
           throw e;
         }
-        console.log('ℹ️ Coluna avatar já existe, pulando...');
       }
 
       try {
         await run(`ALTER TABLE users ADD COLUMN bio TEXT`);
         console.log('✅ Coluna bio adicionada');
       } catch (e) {
-        if (!e.message.includes('duplicate column') && !e.message.includes('already exists')) {
+        if (isColumnExistsError(e)) {
+          console.log('ℹ️ Coluna bio já existe, pulando...');
+        } else {
           throw e;
         }
-        console.log('ℹ️ Coluna bio já existe, pulando...');
       }
 
       try {
         await run(`ALTER TABLE users ADD COLUMN address TEXT`);
         console.log('✅ Coluna address adicionada');
       } catch (e) {
-        if (!e.message.includes('duplicate column') && !e.message.includes('already exists')) {
+        if (isColumnExistsError(e)) {
+          console.log('ℹ️ Coluna address já existe, pulando...');
+        } else {
           throw e;
         }
-        console.log('ℹ️ Coluna address já existe, pulando...');
       }
 
       try {
         await run(`ALTER TABLE users ADD COLUMN city TEXT`);
         console.log('✅ Coluna city adicionada');
       } catch (e) {
-        if (!e.message.includes('duplicate column') && !e.message.includes('already exists')) {
+        if (isColumnExistsError(e)) {
+          console.log('ℹ️ Coluna city já existe, pulando...');
+        } else {
           throw e;
         }
-        console.log('ℹ️ Coluna city já existe, pulando...');
       }
 
       try {
         await run(`ALTER TABLE users ADD COLUMN state TEXT`);
         console.log('✅ Coluna state adicionada');
       } catch (e) {
-        if (!e.message.includes('duplicate column') && !e.message.includes('already exists')) {
+        if (isColumnExistsError(e)) {
+          console.log('ℹ️ Coluna state já existe, pulando...');
+        } else {
           throw e;
         }
-        console.log('ℹ️ Coluna state já existe, pulando...');
       }
 
       try {
         await run(`ALTER TABLE users ADD COLUMN zip_code TEXT`);
         console.log('✅ Coluna zip_code adicionada');
       } catch (e) {
-        if (!e.message.includes('duplicate column') && !e.message.includes('already exists')) {
+        if (isColumnExistsError(e)) {
+          console.log('ℹ️ Coluna zip_code já existe, pulando...');
+        } else {
           throw e;
         }
-        console.log('ℹ️ Coluna zip_code já existe, pulando...');
       }
 
       try {
         await run(`ALTER TABLE users ADD COLUMN is_active INTEGER DEFAULT 1`);
         console.log('✅ Coluna is_active adicionada');
       } catch (e) {
-        if (!e.message.includes('duplicate column') && !e.message.includes('already exists')) {
+        if (isColumnExistsError(e)) {
+          console.log('ℹ️ Coluna is_active já existe, pulando...');
+        } else {
           throw e;
         }
-        console.log('ℹ️ Coluna is_active já existe, pulando...');
       }
 
       try {
         await run(`ALTER TABLE users ADD COLUMN last_login DATETIME`);
         console.log('✅ Coluna last_login adicionada');
       } catch (e) {
-        if (!e.message.includes('duplicate column') && !e.message.includes('already exists')) {
+        if (isColumnExistsError(e)) {
+          console.log('ℹ️ Coluna last_login já existe, pulando...');
+        } else {
           throw e;
         }
-        console.log('ℹ️ Coluna last_login já existe, pulando...');
       }
 
       try {
         await run(`ALTER TABLE users ADD COLUMN updated_at DATETIME DEFAULT CURRENT_TIMESTAMP`);
         console.log('✅ Coluna updated_at adicionada');
       } catch (e) {
-        if (!e.message.includes('duplicate column') && !e.message.includes('already exists')) {
+        if (isColumnExistsError(e)) {
+          console.log('ℹ️ Coluna updated_at já existe, pulando...');
+        } else {
           throw e;
         }
-        console.log('ℹ️ Coluna updated_at já existe, pulando...');
       }
     }
   },
@@ -106,30 +132,33 @@ const migrations = [
         await run(`ALTER TABLE services ADD COLUMN category TEXT`);
         console.log('✅ Coluna category adicionada em services');
       } catch (e) {
-        if (!e.message.includes('duplicate column') && !e.message.includes('already exists')) {
+        if (isColumnExistsError(e)) {
+          console.log('ℹ️ Coluna category já existe, pulando...');
+        } else {
           throw e;
         }
-        console.log('ℹ️ Coluna category já existe, pulando...');
       }
 
       try {
         await run(`ALTER TABLE services ADD COLUMN image_url TEXT`);
         console.log('✅ Coluna image_url adicionada em services');
       } catch (e) {
-        if (!e.message.includes('duplicate column') && !e.message.includes('already exists')) {
+        if (isColumnExistsError(e)) {
+          console.log('ℹ️ Coluna image_url já existe, pulando...');
+        } else {
           throw e;
         }
-        console.log('ℹ️ Coluna image_url já existe, pulando...');
       }
 
       try {
         await run(`ALTER TABLE services ADD COLUMN updated_at DATETIME DEFAULT CURRENT_TIMESTAMP`);
         console.log('✅ Coluna updated_at adicionada em services');
       } catch (e) {
-        if (!e.message.includes('duplicate column') && !e.message.includes('already exists')) {
+        if (isColumnExistsError(e)) {
+          console.log('ℹ️ Coluna updated_at já existe, pulando...');
+        } else {
           throw e;
         }
-        console.log('ℹ️ Coluna updated_at já existe, pulando...');
       }
     }
   },
@@ -140,30 +169,33 @@ const migrations = [
         await run(`ALTER TABLE appointments ADD COLUMN location TEXT`);
         console.log('✅ Coluna location adicionada em appointments');
       } catch (e) {
-        if (!e.message.includes('duplicate column') && !e.message.includes('already exists')) {
+        if (isColumnExistsError(e)) {
+          console.log('ℹ️ Coluna location já existe, pulando...');
+        } else {
           throw e;
         }
-        console.log('ℹ️ Coluna location já existe, pulando...');
       }
 
       try {
         await run(`ALTER TABLE appointments ADD COLUMN cancellation_reason TEXT`);
         console.log('✅ Coluna cancellation_reason adicionada em appointments');
       } catch (e) {
-        if (!e.message.includes('duplicate column') && !e.message.includes('already exists')) {
+        if (isColumnExistsError(e)) {
+          console.log('ℹ️ Coluna cancellation_reason já existe, pulando...');
+        } else {
           throw e;
         }
-        console.log('ℹ️ Coluna cancellation_reason já existe, pulando...');
       }
 
       try {
         await run(`ALTER TABLE appointments ADD COLUMN updated_at DATETIME DEFAULT CURRENT_TIMESTAMP`);
         console.log('✅ Coluna updated_at adicionada em appointments');
       } catch (e) {
-        if (!e.message.includes('duplicate column') && !e.message.includes('already exists')) {
+        if (isColumnExistsError(e)) {
+          console.log('ℹ️ Coluna updated_at já existe, pulando...');
+        } else {
           throw e;
         }
-        console.log('ℹ️ Coluna updated_at já existe, pulando...');
       }
     }
   },
@@ -174,30 +206,59 @@ const migrations = [
         await run(`ALTER TABLE service_requests ADD COLUMN location TEXT`);
         console.log('✅ Coluna location adicionada em service_requests');
       } catch (e) {
-        if (!e.message.includes('duplicate column') && !e.message.includes('already exists')) {
-          throw e;
+        const errorMsg = (e.message || '').toLowerCase();
+        if (!errorMsg.includes('duplicate column') && 
+            !errorMsg.includes('already exists') &&
+            !errorMsg.includes('column') ||
+            !errorMsg.includes('of relation') ||
+            !errorMsg.includes('already exists')) {
+          // Verificar se é erro de coluna já existente (PostgreSQL)
+          if (e.code === '42701' || (errorMsg.includes('column') && errorMsg.includes('already exists'))) {
+            console.log('ℹ️ Coluna location já existe, pulando...');
+          } else {
+            throw e;
+          }
+        } else {
+          console.log('ℹ️ Coluna location já existe, pulando...');
         }
-        console.log('ℹ️ Coluna location já existe, pulando...');
       }
 
       try {
         await run(`ALTER TABLE service_requests ADD COLUMN rejection_reason TEXT`);
         console.log('✅ Coluna rejection_reason adicionada em service_requests');
       } catch (e) {
-        if (!e.message.includes('duplicate column') && !e.message.includes('already exists')) {
-          throw e;
+        const errorMsg = (e.message || '').toLowerCase();
+        if (!errorMsg.includes('duplicate column') && 
+            !errorMsg.includes('already exists') &&
+            !(errorMsg.includes('column') && errorMsg.includes('already exists'))) {
+          // Verificar se é erro de coluna já existente (PostgreSQL)
+          if (e.code === '42701' || (errorMsg.includes('column') && errorMsg.includes('already exists'))) {
+            console.log('ℹ️ Coluna rejection_reason já existe, pulando...');
+          } else {
+            throw e;
+          }
+        } else {
+          console.log('ℹ️ Coluna rejection_reason já existe, pulando...');
         }
-        console.log('ℹ️ Coluna rejection_reason já existe, pulando...');
       }
 
       try {
         await run(`ALTER TABLE service_requests ADD COLUMN updated_at DATETIME DEFAULT CURRENT_TIMESTAMP`);
         console.log('✅ Coluna updated_at adicionada em service_requests');
       } catch (e) {
-        if (!e.message.includes('duplicate column') && !e.message.includes('already exists')) {
-          throw e;
+        const errorMsg = (e.message || '').toLowerCase();
+        if (!errorMsg.includes('duplicate column') && 
+            !errorMsg.includes('already exists') &&
+            !(errorMsg.includes('column') && errorMsg.includes('already exists'))) {
+          // Verificar se é erro de coluna já existente (PostgreSQL)
+          if (e.code === '42701' || (errorMsg.includes('column') && errorMsg.includes('already exists'))) {
+            console.log('ℹ️ Coluna updated_at já existe, pulando...');
+          } else {
+            throw e;
+          }
+        } else {
+          console.log('ℹ️ Coluna updated_at já existe, pulando...');
         }
-        console.log('ℹ️ Coluna updated_at já existe, pulando...');
       }
     }
   }
