@@ -91,55 +91,54 @@ const startServer = async () => {
     // Servir arquivos estáticos do React em produção
     const fs = require('fs');
     
-    // Caminho do build - Render usa /opt/render/project/src como raiz
-    const basePath = process.cwd();
-    const buildPath = path.join(basePath, 'client', 'build');
-    const indexPath = path.join(buildPath, 'index.html');
+    // Tentar múltiplos caminhos possíveis para o build
+    const possibleBuildPaths = [
+      path.join(process.cwd(), 'client', 'build'),
+      path.join(__dirname, '..', 'client', 'build'),
+      path.join(__dirname, '..', '..', 'client', 'build'),
+      '/opt/render/project/src/client/build',
+      path.join(process.cwd(), 'client', 'build')
+    ];
     
     console.log('🔍 Procurando build do React...');
-    console.log('📁 Base path:', basePath);
-    console.log('📁 Build path:', buildPath);
-    console.log('📁 Index path:', indexPath);
+    console.log('📁 process.cwd():', process.cwd());
     console.log('📁 __dirname:', __dirname);
     
-    // Listar diretório raiz para debug
-    try {
-      const rootFiles = fs.readdirSync(basePath);
-      console.log('📂 Arquivos na raiz:', rootFiles.join(', '));
-    } catch (e) {
-      console.warn('⚠️ Não foi possível listar raiz:', e.message);
-    }
+    let buildPath = null;
+    let indexPath = null;
     
-    // Listar diretório client se existir
-    const clientPath = path.join(basePath, 'client');
-    if (fs.existsSync(clientPath)) {
-      try {
-        const clientFiles = fs.readdirSync(clientPath);
-        console.log('📂 Arquivos em client/:', clientFiles.join(', '));
-      } catch (e) {
-        console.warn('⚠️ Não foi possível listar client/:', e.message);
-      }
-    } else {
-      console.warn('⚠️ Diretório client/ não encontrado em:', clientPath);
-    }
-    
-    // Verificar se build existe
-    const buildExists = fs.existsSync(buildPath);
-    const indexExists = fs.existsSync(indexPath);
-    
-    console.log('📁 Build existe?', buildExists);
-    console.log('📁 Index existe?', indexExists);
-    
-    if (buildExists && indexExists) {
-      try {
-        const buildFiles = fs.readdirSync(buildPath);
-        console.log('📂 Arquivos em build/:', buildFiles.join(', '));
-      } catch (e) {
-        console.warn('⚠️ Não foi possível listar build/:', e.message);
+    // Procurar o build em todos os caminhos possíveis
+    for (const possiblePath of possibleBuildPaths) {
+      const possibleIndexPath = path.join(possiblePath, 'index.html');
+      console.log('🔍 Testando:', possiblePath);
+      
+      if (fs.existsSync(possiblePath) && fs.existsSync(possibleIndexPath)) {
+        buildPath = possiblePath;
+        indexPath = possibleIndexPath;
+        console.log('✅ Build encontrado em:', buildPath);
+        
+        // Listar conteúdo do build
+        try {
+          const buildFiles = fs.readdirSync(buildPath);
+          console.log('📂 Arquivos no build:', buildFiles.join(', '));
+        } catch (e) {
+          console.warn('⚠️ Erro ao listar build:', e.message);
+        }
+        break;
+      } else {
+        console.log('   ❌ Não encontrado');
+        if (fs.existsSync(possiblePath)) {
+          try {
+            const files = fs.readdirSync(possiblePath);
+            console.log('   📂 Conteúdo:', files.join(', '));
+          } catch (e) {
+            // Ignorar
+          }
+        }
       }
     }
     
-    if (buildExists && indexExists) {
+    if (buildPath && indexPath) {
       console.log('📁 Servindo de:', buildPath);
       
       // Servir arquivos estáticos do React
@@ -165,10 +164,9 @@ const startServer = async () => {
       
       console.log('✅ Frontend React configurado e servindo!');
     } else {
-      console.warn('⚠️ Frontend build não encontrado!');
-      console.warn('📁 Caminho testado:', buildPath);
-      console.warn('📁 Base path:', basePath);
-      console.warn('📁 __dirname:', __dirname);
+      console.warn('⚠️ Frontend build não encontrado em nenhum dos caminhos!');
+      console.warn('📁 Caminhos testados:');
+      possibleBuildPaths.forEach(p => console.warn('   -', p));
       
       // Criar uma página HTML simples como fallback
       const fallbackHTML = `
