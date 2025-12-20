@@ -54,6 +54,7 @@ app.get('/api/test', (req, res) => {
   });
 });
 
+// IMPORTANTE: Rotas da API DEVEM estar ANTES do static files
 // Rotas da API
 app.use('/api/auth', authRoutes);
 app.use('/api/trainers', trainerRoutes);
@@ -147,21 +148,26 @@ const startServer = async () => {
         etag: false
       }));
       
-      // IMPORTANTE: Esta rota catch-all deve ser a ÚLTIMA
-      // Todas as rotas que não são API, servir o React
-      app.get('*', (req, res, next) => {
-        // Ignorar requisições de API
-        if (req.path.startsWith('/api')) {
-          return next();
-        }
-        // Servir index.html para todas as outras rotas (SPA routing)
-        res.sendFile(path.resolve(indexPath), (err) => {
-          if (err) {
-            console.error('Erro ao servir index.html:', err);
-            next(err);
+      // Rota catch-all para SPA - DEVE ser registrada DEPOIS de tudo
+      // Esta função será chamada no final
+      const setupSPARoute = () => {
+        app.get('*', (req, res, next) => {
+          // Ignorar requisições de API
+          if (req.path.startsWith('/api')) {
+            return next();
           }
+          // Servir index.html para todas as outras rotas (SPA routing)
+          res.sendFile(path.resolve(indexPath), (err) => {
+            if (err) {
+              console.error('Erro ao servir index.html:', err);
+              next(err);
+            }
+          });
         });
-      });
+      };
+      
+      // Configurar rota SPA
+      setupSPARoute();
       
       console.log('✅ Frontend React configurado e servindo!');
     } else {
