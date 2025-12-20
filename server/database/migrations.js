@@ -103,23 +103,25 @@ const migrations = [
       }
 
       try {
-        await run(`ALTER TABLE users ADD COLUMN last_login DATETIME`);
+        await run(`ALTER TABLE users ADD COLUMN last_login TIMESTAMP`);
         console.log('✅ Coluna last_login adicionada');
       } catch (e) {
         if (isColumnExistsError(e)) {
           console.log('ℹ️ Coluna last_login já existe, pulando...');
         } else {
+          console.error('❌ Erro ao adicionar last_login:', e.message);
           throw e;
         }
       }
 
       try {
-        await run(`ALTER TABLE users ADD COLUMN updated_at DATETIME DEFAULT CURRENT_TIMESTAMP`);
+        await run(`ALTER TABLE users ADD COLUMN updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP`);
         console.log('✅ Coluna updated_at adicionada');
       } catch (e) {
         if (isColumnExistsError(e)) {
           console.log('ℹ️ Coluna updated_at já existe, pulando...');
         } else {
+          console.error('❌ Erro ao adicionar updated_at:', e.message);
           throw e;
         }
       }
@@ -133,8 +135,9 @@ const migrations = [
         console.log('✅ Coluna category adicionada em services');
       } catch (e) {
         if (isColumnExistsError(e)) {
-          console.log('ℹ️ Coluna category já existe, pulando...');
+          console.log('ℹ️ Coluna category já existe em services, pulando...');
         } else {
+          console.error('❌ Erro ao adicionar category em services:', e.message);
           throw e;
         }
       }
@@ -144,19 +147,21 @@ const migrations = [
         console.log('✅ Coluna image_url adicionada em services');
       } catch (e) {
         if (isColumnExistsError(e)) {
-          console.log('ℹ️ Coluna image_url já existe, pulando...');
+          console.log('ℹ️ Coluna image_url já existe em services, pulando...');
         } else {
+          console.error('❌ Erro ao adicionar image_url em services:', e.message);
           throw e;
         }
       }
 
       try {
-        await run(`ALTER TABLE services ADD COLUMN updated_at DATETIME DEFAULT CURRENT_TIMESTAMP`);
+        await run(`ALTER TABLE services ADD COLUMN updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP`);
         console.log('✅ Coluna updated_at adicionada em services');
       } catch (e) {
         if (isColumnExistsError(e)) {
-          console.log('ℹ️ Coluna updated_at já existe, pulando...');
+          console.log('ℹ️ Coluna updated_at já existe em services, pulando...');
         } else {
+          console.error('❌ Erro ao adicionar updated_at em services:', e.message);
           throw e;
         }
       }
@@ -246,15 +251,29 @@ const migrations = [
 
 const runMigrations = async () => {
   console.log('🔄 Executando migrações...');
+  let hasErrors = false;
+  
   for (const migration of migrations) {
     try {
       await migration.up();
       console.log(`✅ Migração ${migration.name} concluída`);
     } catch (error) {
-      console.error(`❌ Erro na migração ${migration.name}:`, error.message);
+      // Se for erro de coluna já existente, não é crítico
+      if (isColumnExistsError(error)) {
+        console.log(`ℹ️ Migração ${migration.name}: algumas colunas já existem, continuando...`);
+      } else {
+        console.error(`❌ Erro na migração ${migration.name}:`, error.message);
+        hasErrors = true;
+        // Não parar o processo, apenas logar o erro
+      }
     }
   }
-  console.log('✅ Todas as migrações concluídas!');
+  
+  if (hasErrors) {
+    console.warn('⚠️ Algumas migrações tiveram erros, mas o processo continuou');
+  } else {
+    console.log('✅ Todas as migrações concluídas sem erros críticos!');
+  }
 };
 
 module.exports = { runMigrations };
